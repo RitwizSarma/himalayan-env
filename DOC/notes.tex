@@ -1,0 +1,108 @@
+\documentclass[a4paper,12pt]{article} % Paper size and font size
+
+% Margins
+\usepackage[a4paper, margin=1in]{geometry}
+
+% Font encoding
+\usepackage[T1]{fontenc}
+
+% Language
+\usepackage[english]{babel}
+\usepackage{float}
+% Line spacing
+% \usepackage{setspace}
+% \onehalfspacing % Adjust this as needed
+
+% Header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Results}} % Left header
+\fancyhead[R]{\thepage} % Right header with date
+% \fancyfoot[C]{\thepage} % Center footer with page number
+
+% Bullet points and lists
+\usepackage{enumitem}
+
+% Additional useful packages
+\usepackage{amsmath} % For mathematical typesetting
+\usepackage{amsfonts} % For more fonts
+\usepackage{amssymb} % For additional symbols
+\usepackage[style=apa]{biblatex}
+
+% No indentation for paragraphs
+\setlength{\parindent}{0pt}
+
+% Spacing between paragraphs
+\setlength{\parskip}{0.5em} % Adjust this as needed
+
+% Page number style
+\renewcommand{\thepage}{\arabic{page}}
+
+\addbibresource{himalayan-bib.bib}
+
+\begin{document}
+
+% Title or introductory text
+\title{The Himalayan Tightrope: A High-resolution Study of the Economy-Environmental Trade-off of Infrastructure Development \\[1em]\textit{Results}}
+% \author{Ritwiz Sarma\\Riju Garg}
+\date{}
+\maketitle
+
+\section{Recap: Data}
+
+Our data is as follows:
+
+\begin{description}
+    \item[Night lights (NTL)] Sourced from \textcite{Li2020ntl}. Spatial resolution: 1km. Temporal range: 1992 -- 2023.
+    \item[Built-up area (GHSL)] Sourced from Global Human Settlements Layer, Copernicus (ESA). Spatial resolution: 0.1km. Temporal range: 1975 -- 2030 in 5-year gaps.
+    \item[Land surface temperature (LST)] Sourced from MOD11A2, Terra MODIS (NASA). Spatial resolution 1km. Temporal range: 2000 -- 2020.
+    \item[Forest cover (VCF)] or Vegetation Continuous Fields. Sourced from DevDataLab cf. MOD44B, Terra MODIS (NASA). Spatial resolution: 0.25km. Temporal range: 2001 -- 2020. 
+    \item[PM2.5 air pollution (PM2.5)] Sourced from DevDataLab cf. \textcite{van2021pm25}. Spatial resolution: 1km. Temporal range: 2000 -- 2020.
+\end{description}
+
+\section{Indexation}
+
+We have two methods of indexation: \textit{uniform weighting} (UW) or \textit{principal component analysis} (PCA). Principal component analysis is helpful in the presence of high multicollinearity. To check for high correlation between variables, i.e., to understand if PCA is required, we undertake two tests: the \textit{Kaiser–Meyer–Olkin (KMO) test} and \textit{Bartlett's test of sphericity}.
+
+\begin{table}[H]
+\centering\begin{tabular}{l|r|r}
+    Variables       &   KMO MSA         &   Bartlett p-value        \\
+    \hline 
+    VCF, PM2.5      &   0.5, 0.5        &   0                       \\
+    VCF, PM2.5, LST &   0.68, 0.57, 0.56&   0                       \\
+    
+
+\end{tabular}
+\end{table}
+
+\section{Models}
+
+\begin{equation}
+    \rm{NTL} = \underbrace{\rm{VCF} + \rm{PM2.5} + \rm{LST}}_{\text{PCA required}}
+\label{eqn:model1}
+\end{equation}
+
+Our first model has the highest $T$ (i.e., 20), and is thus more efficient for estimating our epochs. We can consider showing only this for epoch analysis, considering that $\text{GHSL}$ is correlated with NTL anyway. I am obliged to estimate this both with and without the LST term, owing to the justification we have provided for Model~\ref{eqn:model2}.
+
+
+\begin{equation}
+    \underbrace{\rm{NTL} + \rm{GHSL}}_{\text{Both PCA and UW}} = \underbrace{\rm{VCF} + \rm{PM2.5}}_{\text{Both PCA and UW}}
+\label{eqn:model2}
+\end{equation}
+
+Our second model is motivated by LST having more long-run effects than the other environmental indicators. It is limited by having $T = 5$, which necessarily makes the estimation of one epoch an FD instead of FE model.
+
+
+\begin{equation}
+    \underbrace{\rm{NTL} + \rm{GHSL}}_{\text{Both PCA and UW}} = \underbrace{\rm{VCF} + \rm{PM2.5} + \rm{LST}}_{\text{PCA required}}
+\label{eqn:model3}
+\end{equation}
+
+This is the unrestricted model with all indicators. Also has $T = 5$.
+
+
+\section{Results}
+\input{tables/reg_outp_mod1_stdized_epoch1}
+
+\end{document}

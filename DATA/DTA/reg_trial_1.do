@@ -1,5 +1,5 @@
 clear
-use "/Users/rijugarg/Documents/GitHub/himalayan-env/DATA/DTA/DATAA.dta"
+use "/Users/rijugarg/Documents/GitHub/himalayan-env/DATA/DTA/DATA.dta"
 summarize vcfd pm25 lst_median, detail
 egen var1 = std(vcfd)
 egen var2 = std(pm25)

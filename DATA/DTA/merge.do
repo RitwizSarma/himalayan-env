@@ -20,7 +20,7 @@ keep vcfd year shrid
 label var vcfd "Area not covered by vegetation (forest cover)"
 
 merge 1:1 shrid year using "pm25.dta", gen(merge1) // 97k observations will not merge, since PM2.5 data has larger temporal extent than VCF data, similar messages can be expected for succeeding merges
-merge 1:1 shrid year using "lst_correct.dta", gen(merge2)
+merge 1:1 shrid year using "lst.dta", gen(merge2)
 merge 1:1 shrid year using "ntl.dta", gen(merge3)
 merge 1:1 shrid year using "ghsl.dta", gen(merge4)
 
@@ -37,4 +37,4 @@ gen xtid = sum(id)
 drop id
 label var xtid "ID for use with xtset, unique to Shrid ID"
 
-save "DATAA.dta", replace
+save "DATA.dta", replace

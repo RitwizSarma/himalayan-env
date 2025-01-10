@@ -16,4 +16,4 @@ drop lst_mean_float
 drop lst_median_float
 drop lst_sum_float
 
-save "lst_correct.dta", replace
+save "lst.dta", replace

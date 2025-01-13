@@ -1,76 +1,98 @@
-\documentclass{article}
+\documentclass[a4paper,12pt]{article}
 
-% Language setting
-% Replace `english' with e.g. `spanish' to change the document language
-\usepackage[english]{babel}
+% % Document setup
+\usepackage[a4paper]{geometry}
+\setlength{\parskip}{1.5ex plus 0.5ex minus 0.5ex}
 
-% Set page size and margins
-% Replace `letterpaper' with`a4paper' for UK/EU standard size
-\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm,marginparwidth=1.75cm]{geometry}
-
-% Useful packages
-\usepackage{graphicx}
-\usepackage{multirow}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage[skip=5pt plus1pt, indent=25pt]{parskip}
-\usepackage{authblk}
-\usepackage{tfrupee}
+% % Language and typography
+\usepackage{tipa}
 \usepackage{amsmath}
 
-\title{The Himalayan Tightrope: A High-resolution Study of the Economy-Environmental Trade-off of Infrastructure Development}
-\author[1]{Ritwiz Sarma}
-\author[2]{Riju Garg}
-\affil[1,2]{Madras School of Economics}
-\date{August 14, 2024}
+% % Graphics and colors
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+
+% % Bibliography and referencing
+\usepackage[style=apa,sorting=nyt]{biblatex}
+\usepackage{footnotebackref}
+
+% Miscellaneous
+\usepackage{tfrupee} % For rupee symbol
+\usepackage{multirow} % For tables
+\usepackage{fancyhdr} % For custom headers
+\usepackage{titling}
+\usepackage{hyperref}
+\addbibresource{references.bib}
+\hypersetup{
+    colorlinks=true,      % Enable colored links
+    linkcolor=blue,   % Color of internal links
+    citecolor=blue,   % Color of citations
+    urlcolor=blue,    % Color of URLs
+}
+
+% % Remove page number on cover page
+
+\title{\LARGE The Himalayan Tightrope:\\ \Large Balancing Growth and Sustainability amidst\\ Ecological Sensitivity}
+\author{Ritwiz Sarma\thanks{Corresponding author. Email: ge23ritwiz@mse.ac.in. This is a preliminary draft for the 59th Conference of the Indian Econometric Society. Do not cite.}\\\small~Madras School of Economics \and Riju Garg\thanks{Add here.}\\\small~Madras School of Economics} % Riju can add acknowledgements and contact details here.
+% \predate{Latest version available \href{www.facebook.com}{here}\\[1cm]}
+\date{This version: \today}
+
 
 \begin{document}
+\pagestyle{empty}
 \maketitle
-
 \begin{abstract}
 
-    This paper uses modern high-resolution data on growth and environmental degradation to analyze the trade-offs between economic development and ecological conservation amidst infrastructure development in the northern Himalayan region. We use novel satellite-based data sources to capture highly localized effects of development and attempt to investigate the levels of efficiency currently possible in building infrastructure in sensitive biomes.
-
-    Development processes, however, remain inseparable from environmental degradation, even with new advances in clean energy. It thus becomes relevant to explore levels of efficiency, ie. the environmental cost to economic development, that is currently possible in infrastructural development. We use a novel geospatial and temporal dataset which combines economic and envirnomental indicators to investigate localized effects of development processes to compare efficiencies amidst different situational and policy contexts. The study also adds to the growing literature on the development vs. conservation trade-off by capturing a unique view of the opposing forces at play in a biome of great significance to India and the rest of the world.
+    Is there a trade-off between economic growth and environmental preservation? There are few convincing answers. This study uses high-resolution (town/village-level) satellite data to analyse the new relationships emerging between environmental sustainability and growth in the specific context of infrastructure development, for which we build a novel dataset for five economic and environmental indicators over two decades. Our focus is on the ecologically-sensitive Himalayan biome, and specifically on the states of Himachal Pradesh and Uttarakhand, which have experienced significant infrastructure growth over the study period. We capture highly-localized effects and find significant heterogeneities across time, which have implications for sustainable development and decentralized policymaking.
 
 \end{abstract}
-
+\vfill
+\newpage
+\newgeometry{margin=1in}
+\pagestyle{plain}
 
 \section{Introduction}
 
-The “great purpose” of development economics is to build a world where the country of your birth does not “dictate your potential as a human being.\footnote[1]{Quote often attributed to Gen. Romeo Dallaire, the famed UN peacekeeper and Canadian senator.}”  Over the past few decades, the growth of environmental awareness has often conflicted with development, courtesy of the intuition that there exists a zero-sum game between environmental protection and economic development. This paper delves into this perceived tradeoff using new-age satellite-based data sources to focus on a specific biome of exceeding importance, the Himalayas.
+% to be rewritten and lengthened
 
-The Himalayan mountain range has always been considered a boon to India in terms of the natural resources, economic support, and natural defence that it provides. Development in the Himalayas, however, has been contentious: on one hand, there has been rapid infrastructural development and investment by the government, in order to increase the connectivity of the Himalayan states with the rest of the country and extract more economic benefits through avenues such as tourism. On the other hand, nudges to the fragile environmental ecosystem of the Himalayas has been connected to their increased vulnerability to disasters - the most notable example being the 2023 land subsidence incident at Joshimath, Uttarakhand (Sharma, 2023).
+Over the past few decades, the growth of environmental awareness has often conflicted with voices urging for development, courtesy of often contrasting perspectives on the relation between environmental sustainability and economic growth \parencite{arrow1995,grossman1991,grossman1995,list1999,selden1994,shafik1992}. The investigation of this relationship has often used the environmental Kuznets curve, which hypothesizes an inverted-U shaped relationship between growth and environmental degradation. This paper uses new-age satellite-based data sources to reconstruct and analyse the environmental Kuznets formulation for a specific biome of exceeding importance, the Himalayas.
 
-There exists a substantial literature on the economy-environment trade-off, especially building on the Environmental Kuznets Curve, which predicts an inverse U-shaped relationship between economic growth and environmental degradation (Dasgupta et al., 2002; Ekins, 1997; Nguyen \& Malesky, 2021; Porter \& van der Linde, 1995). These estimations are often made from large-scale macroeconomic data at the level of countries. This study uses high-resolution temporal data, which allows us to narrow our focus to the Himalayan states of Himachal Pradesh and Uttarakhand, while also preserving statistical richness in the data to make inferences possible. 
+The Himalayan mountain range – often called the “third pole” - has always been considered a boon to India in terms of the natural resources, economic support, and natural defence that it provides \parencite{dyola2024}. Development in the Himalayas, however, has been controversial: on one hand, there has been rapid infrastructural development and investment by the government, in order to increase the connectivity of the Himalayan states with the rest of the country and extract more economic benefits through avenues such as tourism (ibid.). On the other hand, nudges to the fragile environmental ecosystem of the Himalayas have been connected to their increased vulnerability to disasters - the most notable example being the 2023 land subsidence incident at Joshimath, Uttarakhand \parencite{sharma2023}.
 
-The following section provides further context on the economy-environment tradeoff and its intersection with the Indian policy backdrop. The third section describes our data across our temporal range and introduces our panel model to study the impacts of change in the environmental indicators on the nighttime lights data, which is being used as a signal of infrastructure development. The fourth section summarizes our results, and the final section concludes.
+This study uses high-resolution geospatial data, which allows us to narrow our focus to the Himalayan states of Himachal Pradesh and Uttarakhand, while preserving richness in the data to make statistical inference possible. Our novel construction of the EKC is at the village/census town level, compared to previous estimations made from large-scale macroeconomic data at the level of countries or states (for example, \cite{caviglia2009,kalka2013,list1999}). This allows us to account for localized heterogeneities, which are particularly important in this ecologically sensitive region. We trace the paths of development and ecological degradation and find contrasting relationships across different periods, even as growth processes grow seemingly unabated.
+
+The following section provides further context on the economy-environment trade-off and its intersection with the Indian policy backdrop. The third section describes our data across our temporal range and introduces our panel model to study the impacts of change in the environmental indicators on the night-time lights data, which is being used as a signal of infrastructure development. The fourth section summarizes our results, and the final section concludes.
 
 
-\section{Context}
+\section{Context: Why Build Infrastructure?}
 
-\subsection{Competing Motivations}
+The infrastructural development of the Himalayan region is vital for India from three perspectives: economic, political, and administrative. We provide general outlines for the latter two and focus primarily on the first.
 
-The infrastructural development of the Himalayan region is vital for India from three perspectives: economic, political and administrative. 
+The Himalayas are located on India’s border with China, Nepal, and Bhutan. This has spurred numerous infrastructural programmes, including the India-China Border Roads (ICBR) built since 1997 \parencite{mha_n.d.} in response to Chinese infrastructure development along the border. The project includes construction of strategic roads, including bridges and tunnels, for commuting of artillery and infantry, thereby ensuring increased security. Thus, from the administrative perspective, building infrastructure becomes essential to strengthen the reach of the state. For example, during a natural calamity, relief efforts become more convenient to carry out in the presence of better infrastructure.
 
-The economic perspective highlights the importance of investment in the Himalayan region with the help of infrastructural development like roads and dams in order to spur network effects and increase efficiency. Roads are essential amidst the mountainous terrain to improve connectivity provide livelihoods through tourism. Uttarakhand is shifting from being an agriculture-based economy to one focusing on manufacturing and services. The primary sector provided for 10.2\% of GSDP in 2019-20 – a steep fall from a lofty 31.49\% in 1999-2000. The provision of livelihoods in Himachal Pradesh has increasingly become a political concern, especially since no political party has dominated state elections. Road-building in particular remains a politically-favoured form of public investment, mainly because of its visible nature which promises electoral returns. From the administrative perspective, building infrastructure deepens and strengthens the reach of the state. 
+From a political perspective, road building in particular remains a favoured form of public investment, mainly because of its visible nature which promises electoral returns \parencite{berg2015}. Moreover, local economic conditions may call for politically motivated investment. In Uttarakhand, a shift is taking place from being an agriculture-based economy to one focusing on manufacturing and services. The primary sector provided for 10.2\% of GSDP in 2019-20 – a steep fall from a lofty 31.49\% in 1999-2000 \parencite{directorate2021}. As for Himachal Pradesh, provision of livelihoods has increasingly become a political concern, especially since no political party has dominated state elections \parencite{kumar2022}. Thus, by investing in infrastructure development, policymakers may claim a stimulus effect for the local economy hoping to attract voters.
 
-The strategic location of the Himalayas is another reason to promote infrastructural development. It connects India with the neighboring countries China, Nepal and Bhutan. The India-China Border Roads (ICBR) in response to Chinese infrastructure development along the border. The project includes construction of strategic roads, including bridges and tunnels. The improved connectivity is also vital for commuting of artillery and infantry, thereby ensuring increased security.
+The economic motivation views infrastructure investment in the Himalayan region as key to development. The United Nations Environment Programme divides mountain infrastructure into three categories: Access, Communication, and Energy to highlight their importance as agents of change \parencite{kohler2002}. The following can be considered as the main examples of the three categories respectively: roads, telecom services \& internet, and dams. Roads are essential amidst the mountainous terrain to improve connectivity and provide livelihoods through tourism. Telecom services and internet connectivity improve the communication of the states and bridge the digital gap, promoting better education and health care facilities as well. Hydroelectric power plants provide energy that is essential for local development. We expand more on our view of infrastructure and growth in the following section.
 
-However, the Himalayan states have a record of natural calamities propelled by development processes: the 2013 Uttarakhand floods prompted discussion on overexploitation of natural resources and the awareness for sustainable development. Ten years later, the Himalayan region was struck by the Joshimath land subsidence incident in 2023. Though the government has tried to initiate programmes like Himalaya Diwas to protect the ecosystem, the results have not been satisfactory.
+It remains true that the Himalayan states have a record of natural calamities propelled by development processes: the 2013 Uttarakhand floods prompted discussion on overexploitation of natural resources and the awareness for sustainable development. Ten years later, the Himalayan region was struck by the Joshimath land subsidence incident in 2023. Though the government has tried to initiate programmes like Himalaya Diwas \parencite{press2021} to protect the ecosystem, the results have not been satisfactory.
 
-\subsection{Theoretical Framework}
 
-The Environmental Kuznets Curve (EKC) was introduced with the hypothesis that there exists an inverted U-shaped relationship between environmental degradation and national income\footnote[2]{The original Kuznets curve, introduced by the Russian economist Simon Kuznets, dealt with inequality and economic growth.}. It was developed by Grossman and Krueger (1991) who analyzed the linkage between economic growth and environmental pollution. They used four types of indicators: urban air pollution, the state of the oxygen regime in river basins, fecal contamination of river basins, and contamination of river basins by heavy metals. They postulated that the initial stages of economic growth are noted to be associated with increased environmental degradation due to increased exploitation of natural resources, production, and industrialization. They divide the economic growth into three periods: pre- industrial economy, industrial economy and post- industrial economy. Therefore, environmental degradation may be inevitable in developing regions where countries have either embarked on or are in the process of embarking on the path to development.
+\section{Theoretical Framework}
+
+The environmental Kuznets curve (EKC) was introduced with the hypothesis that there exists an inverted-U relationship between environmental degradation and national income. It was developed by \textcite{grossman1991} who analyzed the linkage between economic growth and environmental pollution. Using indicators on air pollution and contamination of river basins, they postulated that the initial stages of economic growth are associated with increased environmental degradation due to increased exploitation of natural resources, production, and industrialization and thus environmental degradation may be inevitable in developing regions where countries have either embarked on or are in the process of embarking on the path to development.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{images/kuznets_scen.png}
     \caption{Different scenarios for the Environmental Kuznets curve (Dasgupta et al., 2002).}
+    \label{fig:kuznets}
 \end{figure}
 
+However, there is a significant body of work contradicting the inverted-U hypothesis. \textcite{stern2004} points out that the EKC is econometrically weak and that the empirical support for the EKC is mixed. \textcite{dasgupta2002} presented evidence that contradicted the typical EKC pattern (Figure \ref{fig:kuznets}). Similarly, the shape of the Kuznets curve has been disputed over the past decades \parencite{caviglia2009,kalka2013,list1999}. In short, while the inverted-U essentially predicts that economies will “grow out of” \parencite{shafik1992} environmental damage, this does not necessarily follow. Achieving growth is therefore not a panacea for environmental loss, no matter how appealing the counterfactual may be.
 
-There have been studies contradicting the EKC as well. Stern (2004) points out that the EKC is econometrically weak and that the empirical support for the EKC is mixed. S. Dasgupta et al. (2002) presented evidence that contradicted the typical EKC pattern. Similarly, the shape of the Kuznets curve has been disputed over the past decades (Caviglia-Harris et al., 2009, Dimitra \& Efthimios, 2013, List \& Gallet, 1999). 
+The existing literature has mostly used indicators like air quality, emissions, and particulate matter to study environmental degradation as a proxy to analyze economic growth. \textcite{caviglia2009} use Ecological Footprint (EF) as a measure of environmental degradation. However, in this paper, we also include forest cover as an indicator for environmental degradation. Forest cover is a respected measure of environmental sustainability \parencite{wang2003}. For example, the Finance Commission of India, which rewards efforts made towards environmental sustainability for horizontal devolution of funds, uses forest cover as the sole metric \parencite{finance2020}.
+
+Our focus throughout this study is the role of infrastructure growth, for which we present several motivations. Infrastructure growth, in the form of transportation systems and urbanization, is generally hypothesized as a catalyst for environmental degradation in the Himalayas \parencite{prashar2023,singh2005}. Moreover, the long-run effects of environmental degradation are inescapably infrastructure decay - landslides regularly block roads \parencite{mey2023} and render public funds spent on connectivity worthless. Nonetheless, public infrastructure investment as a pathway to growth is an accepted ‘stylized fact’ and has been empirically demonstrated as true for the Himalayan region in particular (e.g., \cite{tiwari2000}). Political and administrative incentives also align with infrastructure investment, as mentioned in Section 2.1. We therefore use night-lights and built-up area using publicly available satellite data to measure what we term as “infrastructure-led economic growth” (ILEG). ILEG reflects ground-level infrastructure development at a high resolution and provides a suitable measure of overall growth. We expand on our data further in the next section.
 
 
 \section{Data}
@@ -89,16 +111,11 @@ There have been studies contradicting the EKC as well. Stern (2004) points out t
     \caption{Descriptive statistics.}
 \end{table}
 
+Our smallest unit of measurement is the shrid, an area unit used by the Socioeconomic High-resolution Rural-Urban Geographic Platform for India (SHRUG). It is a village or town unit that has had consistent borders since 1991. This subnational resolution allows us to vastly expand the statistical power of our tests, which becomes relevant in our estimation tasks later.
 
-Our smallest unit of measurement is the \textit{shrid}, an area unit used by the Socioeconomic High-resolution Rural-Urban Geographic Platform for India (SHRUG). It is a village or town unit that has had consistent borders since 1991. This subnational resolution allows us to vastly expand the  statistical power of our tests, which becomes relevant in our estimation tasks later.
-
-For studying economic growth, we use night-time lights and built-up area (Table 1). Nighttime lights data has been used to generate measures of economic activity from the early 1990s. Satellite nighttime light data offers a unique and comprehensive view of the entire planet, enabling the identification of energy access and quality gaps, as well as trends in economic activity. The remote sensing and economics literature suggests a strong correlation between nighttime lights and GDP growth, even at the subnational level, as Doll et al. (2006) find for the regional GDP of 11 European Union countries and US GDP at the state level. We use two sources for night-lights: the Defense Meteorological Program Operational Line-Scan System (DMSP-OLS) and the Visible Infrared Imaging Radiometer Suite (VIIRS) instrument. DMSP-OLS has the unique capability to detect visible and near-infrared emission sources at night, while VIIRS data is a new consistently-processed time series of annual global nighttime lights that has been produced from monthly cloud-free average radiance grids.
-
-Built-up area is also obtained from high-resolution daytime satellite data. It leverages a particular type of land use associated with urbanization. It is also used for detecting economic activity at highly local levels - which is particularly useful for developing countries where infrastructure growth is especially likely to spur economic growth. Baragwanath et al. (2021) is an example of a similar use case. We obtain our built-up area estimates from the GHSL (Global Human Settlement) framework provided by the Copernicus Data Space Ecosystem. 
-
-For environmental degradation, we measure air quality, forest cover, and land surface temperature (LST). Surface PM 2.5 is the estimated annual ground level fine particulate matter by combining Aerosol Optical Depth (AOD) retrievals from the NASA MODIS, MISR and SeaWIFS instruments with the GEOS-Chem chemical transport model. The satellite-based Vegetation Continuous Fields (VCF) is used for measuring global forest cover change. It is usually a key parameter for a variety of environmental and climate related applications. LST serves as a predictor for global warming. 
-
-Environmental index is formed based on the average of the environmental indicators, for simplicity it is assumed that all indicators carry equal weights.
+For studying economic growth, we use night-time lights and built-up area (Table 1). Night-time lights data has been used to generate measures of economic activity from the early 1990s. Satellite night-time light data offers a unique and comprehensive view of the entire planet, enabling the identification of energy access and quality gaps, as well as trends in economic activity. The remote sensing and economics literature suggests a strong correlation between night-time lights and GDP growth, even at the subnational level, as \textcite{doll2006} find for the regional GDP of 11 European Union countries and US GDP at the state level. We use two sources for night-lights: the Defense Meteorological Program Operational Line-Scan System (DMSP-OLS) and the Visible Infrared Imaging Radiometer Suite (VIIRS) instrument. DMSP-OLS has the unique capability to detect visible and near-infrared emission sources at night, while VIIRS data is a new consistently processed time series of annual global night-time lights that has been produced from monthly cloud-free average radiance grids.
+Built-up area is also obtained from high-resolution daytime satellite data. It leverages a particular type of land use associated with urbanization. It is also used for detecting economic activity at highly local levels - which is particularly useful for developing countries where infrastructure growth is especially likely to spur economic growth. \textcite{baragwanath2021} is an example of a similar use case. We obtain our built-up area estimates from the GHSL (Global Human Settlement) framework provided by the Copernicus Data Space Ecosystem.
+For environmental degradation, we measure air quality, forest cover, and land surface temperature (LST). Surface PM 2.5 is the estimated annual ground level fine particulate matter by combining Aerosol Optical Depth (AOD) retrievals from the NASA MODIS, MISR and SeaWIFS instruments with the GEOS-Chem chemical transport model. The satellite-based Vegetation Continuous Fields (VCF) is used for measuring global forest cover change. It is usually a key parameter for a variety of environmental and climate related applications. LST serves as a predictor for global warming.
 
 
 \section{Findings}
@@ -124,7 +141,7 @@ Environmental index is formed based on the average of the environmental indicato
 
 \begin{description}
     \item[Forest Cover] The state exhibits a heterogeneous pattern of forest cover growth. From the early 2000s to the mid-2000s, the trend mirrored that of Himachal Pradesh, with increasing forest cover in the northern districts and a decline in the southern districts, notably Haridwar and Rudrapur. However, from the mid-2000s to the 2010s, the forest cover decreased across the state. After 2010, a resurgence in forest cover growth was observed.
-    \item[Nighttime lights] Nighttime lights increased gradually from the early 2000s to the mid-2000s. However, from the mid-2000s to the early 2010s, there was a more pronounced growth in nighttime light intensity, depicting higher economic growth.
+    \item[Nighttime lights] Night lights increased gradually from the early 2000s to the mid-2000s. However, from the mid-2000s to the early 2010s, there was a more pronounced growth in night-time light intensity, depicting higher economic growth.
 
 \end{description}
 
@@ -145,12 +162,6 @@ EnvIndex_{it} = \beta_0 + \beta_1(EconIndex_{it}) + \beta_2(EconIndex_{it}^2) + 
 
 where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and $\epsilon_{it}$ represents the stochastic error term.
 
-
-\input{tables/reg_outp_mod1_stdized_epoch1.tex}
-
-
-
-
 \begin{table}[h]
     \centering
     \begin{tabular}{l|rrrr}
@@ -161,9 +172,8 @@ where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and
     \\ \hline        
 \end{tabular}
 \caption{First epoch regression results. *** represent significance at the 1\% level.}
+\label{tab:epoch1}
 \end{table}
-
-
 
 \begin{table}[h]
     \centering
@@ -175,75 +185,44 @@ where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and
     \\ \hline        
 \end{tabular}
 \caption{Second epoch regression results. *** represent significance at the 1\% level.}
+\label{tab:epoch2}
 \end{table}
 
+% \input{tables/reg_outp_mod1_stdized_epoch1.tex}
 
+The regression results showcase a mixed response with respect to the Environmental Kuznets curve hypothesis. During the initial epoch (Table \ref{tab:epoch1}), the results are consistent with the EKC and the scatterplot is an inverse-U curve (Figure \ref{fig:epoch1}), that is economic growth and environment degradation, are both increasing until a certain level before the environment degradation starts to reduce.
 
-The regression results showcase a mixed response with respect to the Environmental Kuznets curve hypothesis. During the initial epoch, the results are consistent with the EKC and scatterplot is an inverse U-shaped curve, that is economic growth and environment degradation, are both increasing until a certain level before the environment degradation starts to reduce.
+With time, there is a deviation from this hypothesis. During the second epoch (Table \ref{tab:epoch2}), the results contradicted the EKC, with a U-shaped curve (Figure \ref{fig:epoch2}) indicating that as economic growth increases there is a fall in environmental degradation till a certain level. After that certain level is attained, the environmental degradation starts to rise again with economic growth.
 
-With time, there is a deviation from this hypothesis. During the second epoch, the results contradicted the EKC, with a U-shaped curve indicating that as economic growth increases there is a fall in environmental degradation till a certain level. After that certain level is attained, the environmental degradation starts to rise again with economic growth.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{images/kuznets.png}
     \caption{Estimated relationship for first epoch, similar to the EKC from Figure 1.}
+    \label{fig:epoch1}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{images/notkuznets.png}
     \caption{Estimated relationship for second epoch, inverse of Figure 3.}
+    \label{fig:epoch2}
 \end{figure}
 
 
 \section{Conclusion}
 
-We find that there exists significant complexity and geography-specific heterogeneity in the relationship between economic development and environmental degradation. It depends upon the time period and the data being looked at. Sustainable development is thus incumbent upon understanding the needs of the economy at the time period concerning the policy decision. There is no ‘one size fits all’ policy that can work at all periods without any alteration.
+Our estimations result in an inverted U-shaped curve for the first epoch and a U-shaped curve for the second epoch. These inconsistent results imply presence of heterogeneity across time. While the initial period seems to conform to the traditional EKC hypothesis (inverted-U), the second period shows the opposite, with both results remaining statistically significant. Our evidence thus suggests that the economy-environment trade-off in the Himalayas is certainly more complex than the EKC suggests. 
 
-The literature on development, as well as the lived experiences of several developing economies tell us that it is natural to face high environmental degradation during high economic growth (as backed up by the EKC), but after a certain time period, the focus should be shifted to growth without harming the environment. 
+Our primary takeaway from this result is that simplistic hypotheses are unlikely to be robust in ecologically sensitive areas, such as the Himalayas. The literature on development, as well as the lived experiences of several developing economies tell us that it is natural to face high environmental degradation during high economic growth. It is possible that ecological sensitivity is likely to increase the repercussions of developmental processes substantially, to the point where the compounded positive effects of growth no longer compensate for the ecological loss. 
 
-Macroeconomic theory tells us that if the economy is facing a U-shaped curve, the policymaker must focus on strategies to sustain growth while simultaneously reducing environment degradation. Simple measures include switching to renewable sources of energy, solar plants, windmills which might be financially costly for developing countries but as a country attains growth, they can invest for environment protection. Other measures include encouragement of public transport as well as a switch to electric vehicles.
+An alternative, more worrying hypothesis is based on the fact that infrastructure growth (and by extension, ILEG) has consistently increased across our sample period. It is possible that the ecological dynamics of the area of interest may have reached a particular ‘tipping point’ - that is, the local relationship between economic growth and environmental degradation may have drastically changed over the past decade. A study focused on this phenomenon may unearth valuable results.
 
+Like many other studies over the years focusing on the EKC, we benefit from recent advances in econometrics and data science to provide this novel analysis. The formulation of the EKC in literature has generally remained stable, which we have borrowed from as well. Our study gains from numerous statistical advantages - a balanced panel and large sample size, to name some - and thus illustrates data limitations (rather than theoretical loopholes) faced by previous studies.
 
-
-\section{References}
-Asher, S., Lunt, T., Matsuura, R., \& Novosad, P. (2021). Development research at high geographic resolution: an analysis of night-lights, firms, and poverty in India using the shrug open data platform. The World Bank Economic Review, 35(4), 845-871.
-
-Baragwanath, K., Goldblatt, R., Hanson, G., \& Khandelwal, A. K. (2021). Detecting urban markets with satellite imagery: An application to India, Journal of Urban Economics, 125.
-
-Caviglia-Harris, J., Chambers, D., \& Kahn, J. R. (2009). Taking the “U” out of Kuznets. Ecological Economics, 68(4), 1149-1159.
-
-Dasgupta, S., Laplante, B., Wang, H., \& Wheeler, D. (2002). Confronting the Environmental Kuznets Curve. The Journal of Economic Perspectives, 16(1), 147-168.
-
-Dimiceli, C., Carroll, M., Sohlberg, R., Kim, D. H., Kelly, M., \& Townshend, J. R. G. (2015). MOD44B MODIS/Terra Vegetation Continuous Fields Yearly L3 Global 250m SIN Grid V006 [Data set], NASA EOSDIS L. Process. DAAC.
-
-Doll, C. N. H., Muller, J., \& Morley, J. G. (2006). Mapping regional economic activity from night-time light satellite imagery. Ecological Economics, 57(1), 75-92.
-
-Van Donkelaar, A., Hammer, M. S., Bindle, L., Brauer, M., Brook, J. R.,Garay, M. J., Hsu, N. C., et al. (2021). Monthly global estimates of fine particulate matter and their uncertainty. Environmental Science \& Technology 55(22), 15287-15300.
-
-Ekins, P. (1997). The Kuznets curve for the environment and economic growth: examining the evidence. Environment and Planning, 29(5), 805-830.
-
-Grossman, G. M., \& Krueger, A. B. (1995). Economic Growth and the Environment. Quarterly Journal of Economics, 110(2), 353-367. https://www.jstor.org/stable/2118443.
-
-Henderson, V., Storeygard, A., \& Weil, D. N. (2011). A bright idea for measuring economic growth. American Economic Review, 101(3), 194-199.
-
-Kaika, D., \& Zervas, E. (2013). The Environmental Kuznets Curve (EKC) theory—Part A: Concept, causes and the CO2 emissions case. Energy Policy, 62, 1392–1402.
-
-List, J. A., \& Gallet, C. A. (1999). The environmental Kuznets curve: does one size fit all? Ecological Economics, 31(3), 409–423. https://doi.org/10.1016/s0921-8009(99)00064-6
-
-Ministry of Home Affairs, Government of India. (n.d.) Management of Indo-China Border. Government of India.
-Sharma, S. (2023, January 11). Joshimath sinking: What is the NTPC project and why 
-are geologists blaming it? Business Today. https://www.businesstoday.in/latest/story/joshimath-sinking-what-is-the-ntpc-project-and-why-are-geologists-blaming-it-359832-2023-01-11.
-
-Nguyen, Q., \& Malesky, E. (2021). Fish or steel? New evidence on the environment-economy trade-off in developing Vietnam. World Development, 147, 105603. https://doi.org/10.1016/j.worlddev.2021.105603.
-
-Porter, M. E., \& van der Linde, C. (1995). Toward a New Conception of the Environment-Competitiveness Relationship. Journal of Economic Perspectives, 9(4), 97-118.
-
-Stern, D. I. (2004). The Rise and Fall of the Environmental Kuznets Curve. World Development, 32(8), 1419-1439.
+To conclude, we reproduce List \& Gallet’s \parencite*{list1999} opinions on the policy importance of their study: “sustainable development strategies critically depend on well-informed policymakers.” Our work adds a vital new angle to this larger push towards evidence-based policymaking, viz., that local effects may diverge significantly from the overall. This adds a new imperative for third-tier policymakers. If the economy is facing a U-shaped curve, policymakers must focus on strategies to sustain growth while simultaneously reducing environmental degradation. Simple measures include switching to renewable sources of energy, solar plants, windmills which might be financially costly for developing countries but as a country attains growth, they can invest for environment protection \parencite{unep2023}. Other measures include encouragement of public transport as well as a switch to electric vehicles (ibid.).
 
 
-
-
-
+\printbibliography
 
 \end{document}

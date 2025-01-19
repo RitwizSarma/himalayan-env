@@ -17,7 +17,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textbf{Results}} % Left header
+\fancyhead[L]{\textbf{Findings}} % Left header
 \fancyhead[R]{\thepage} % Right header with date
 % \fancyfoot[C]{\thepage} % Center footer with page number
 
@@ -44,7 +44,7 @@
 \begin{document}
 
 % Title or introductory text
-\title{The Himalayan Tightrope: A High-resolution Study of the Economy-Environmental Trade-off of Infrastructure Development \\[1em]\textit{Results}}
+\title{The Himalayan Tightrope: A High-resolution Study of the Economy-Environmental Trade-off of Infrastructure Development \\[1em]\textit{Findings}}
 % \author{Ritwiz Sarma\\Riju Garg}
 \date{}
 \maketitle
@@ -102,7 +102,26 @@ Our second model is motivated by LST having more long-run effects than the other
 This is the unrestricted model with all indicators. Also has $T = 5$.
 
 
+\section{Some Worries: Assumptions during Analysis}
+
+The following are assumptions made and possible weaknesses in our analysis identified after compiling the full dataset. They can be read as pain points, which can be fixed in future versions, or as questions that may arise during presentations, and thus require explanations to be prepared.
+
+\begin{description}
+    \item[Mean vs Median] We currently use the median cell value while building our zonal statistics for LST, and mean for all others. This needs to be qualified by theory and on some understanding of the data distribution.
+    \item[Sample selection bias] We are currently deleting \textit{shrids} where data is missing for some particular indicator: ref line 63-65 and 132 of \texttt{regression.R}, which leads to losing upto 1\% of the population.
+    \item[Cluster standard errors] Should we cluster standard errors by group, or by time, or simply report heteroskedasticity-robust standard errors?
+    \item[Standardization] We are currently standardizing our variables (i.e., $\mu = 0$ and $\sigma^2 = 1$) before estimating coefficients. Does this take away from our analysis? Is this commonplace?
+
+\end{description}
+
+
 \section{Results}
-\input{tables/reg_outp_mod1_stdized_epoch1}
+\input{tables/desc_stats.tex}
+\input{tables/reg_outp_mod1_stdized_epoch12}
+
+
+
+\newpage
+
 
 \end{document}

@@ -1,38 +1,38 @@
 
 % Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
-% Date and time: Sun, Jan 05, 2025 - 23:55:09
-\begin{table}[hbt] \centering 
-  \caption{Regression results from Model 1 for Epoch 1.} 
-  \label{} 
+% Date and time: Fri, Jan 17, 2025 - 01:16:50
+\begin{table}[H] \centering 
+  \caption{Regression results from Model 1 for Epoch 1. UW implies uniform weighting, Env implies PCA index.} 
+  \label{tab:mod1} 
 \begin{tabular}{@{\extracolsep{5pt}}lccc} 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
  & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
 \cline{2-4} 
-\\[-1.8ex] & ntl\_mean\_st & ntl\_mean & ntl\_mean\_st \\ 
+\\[-1.8ex] & \multicolumn{3}{c}{Nighttime lights (std.)} \\ 
 \\[-1.8ex] & (1) & (2) & (3)\\ 
 \hline \\[-1.8ex] 
- env\_index & 0.144$^{***}$ &  &  \\ 
+ Envindex$_{\rm{full}}$ & 0.075$^{***}$ &  &  \\ 
   & (0.00001) &  &  \\ 
   & & & \\ 
- env\_index\_sq & 0.068$^{***}$ &  &  \\ 
+  Envindex$_{\rm{full}}^2$ & 0.071$^{***}$ &  &  \\ 
   & (0.00000) &  &  \\ 
   & & & \\ 
- VCF\_LST\_PC &  & 0.434$^{***}$ &  \\ 
-  &  & (0.0004) &  \\ 
+ Env$_{\rm{VCF,PM2.5}}$ &  & 0.024$^{***}$ &  \\ 
+  &  & (0.00000) &  \\ 
   & & & \\ 
- VCF\_LST\_PC$^2$ &  & 0.567$^{***}$ &  \\ 
-  &  & (0.0001) &  \\ 
+ Env$_{\rm{VCF,PM2.5}}^2$ &  & 0.073$^{***}$ &  \\ 
+  &  & (0.00000) &  \\ 
   & & & \\ 
- VCF\_LST\_UW &  &  & 0.097$^{***}$ \\ 
-  &  &  & (0.00002) \\ 
+ VCF+PM2.5$_{UW}$ &  &  & 0.034$^{***}$ \\ 
+  &  &  & (0.00001) \\ 
   & & & \\ 
- VCF\_LST\_UW$^2$ &  &  & 0.179$^{***}$ \\ 
-  &  &  & (0.00000) \\ 
+ VCF+PM2.5$_{UW}^2$ &  &  & 0.147$^{***}$ \\ 
+  &  &  & (0.00001) \\ 
   & & & \\ 
 \hline \\[-1.8ex] 
-Observations & 97,758 & 97,875 & 97,875 \\ 
-R$^{2}$ & 0.120 & 0.101 & 0.101 \\ 
+Observations & 325,860 & 325,860 & 325,860 \\ 
+R$^{2}$ & 0.060 & 0.051 & 0.051 \\ 
 \hline 
 \hline \\[-1.8ex] 
 \textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 

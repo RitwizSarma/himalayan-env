@@ -33,9 +33,9 @@
 % % Remove page number on cover page
 
 \title{\LARGE The Himalayan Tightrope:\\ \Large Balancing Growth and Sustainability amidst\\ Ecological Sensitivity}
-\author{Ritwiz Sarma\thanks{Corresponding author. Email: ge23ritwiz@mse.ac.in. This is a preliminary draft for the 59th Conference of the Indian Econometric Society. Do not cite.}\\\small~Madras School of Economics \and Riju Garg\thanks{Add here.}\\\small~Madras School of Economics} % Riju can add acknowledgements and contact details here.
+\author{Ritwiz Sarma\thanks{Corresponding author. Email: ge23ritwiz@mse.ac.in. This is a preliminary draft for the 59th Conference of the Indian Econometric Society. Do not cite.}\\\small~Madras School of Economics \and Riju Garg\thanks{Email: ge23riju@mse.ac.in.}\\\small~Madras School of Economics} % Riju can add acknowledgements and contact details here.
 % \predate{Latest version available \href{www.facebook.com}{here}\\[1cm]}
-\date{This version: \today}
+\date{This version: January 14, 2025}
 
 
 \begin{document}
@@ -43,10 +43,14 @@
 \maketitle
 \begin{abstract}
 
-    Is there a trade-off between economic growth and environmental preservation? There are few convincing answers. This study uses high-resolution (town/village-level) satellite data to analyse the new relationships emerging between environmental sustainability and growth in the specific context of infrastructure development, for which we build a novel dataset for five economic and environmental indicators over two decades. Our focus is on the ecologically-sensitive Himalayan biome, and specifically on the states of Himachal Pradesh and Uttarakhand, which have experienced significant infrastructure growth over the study period. We capture highly-localized effects and find significant heterogeneities across time, which have implications for sustainable development and decentralized policymaking.
+    Is there a trade-off between economic growth and environmental preservation? This study uses high-resolution (town/village-level) satellite data to analyse the new relationships emerging between environmental sustainability and growth in the specific context of infrastructure development, for which we build a novel dataset for five economic and environmental indicators over two decades. Our focus is on the ecologically-sensitive Himalayan biome, and specifically on the states of Himachal Pradesh and Uttarakhand, which have experienced significant infrastructure growth over the study period. We capture highly-localized effects and find significant heterogeneities across time, which have implications for sustainable development and decentralized policymaking.
 
 \end{abstract}
 \vfill
+\textit{Keywords}: Infrastructure, Growth, Sustainable Development, Remote Sensing, Economy-Ecology Tradeoff
+% \begin{center}
+%     \footnotesize Something.
+% \end{center}
 \newpage
 \newgeometry{margin=1in}
 \pagestyle{plain}
@@ -97,19 +101,21 @@ Our focus throughout this study is the role of infrastructure growth, for which 
 
 \section{Data}
 
-\begin{table}[b]
-    \centering
-    \begin{tabular}{|l|r|r|r|r|}
-    \hline
-    \multicolumn{1}{|c|}{\textbf{Variable}} & \multicolumn{1}{c|}{\textbf{Mean}} & \multicolumn{1}{c|}{\textbf{Std. Dev.}} & \textbf{Min} & \textbf{Max} \\ \hline
-    Built-up area                           & 69.70                             & 107.06                                  & 0.00            & 1570.46      \\ \hline
-    Night-lights                            & 2.19                              & 4.21                                   & 0.00            & 63.00           \\ \hline
-    Forest cover                            & 24.89                              & 8.42                                    & 79.62        & 120.00          \\ \hline
-    PM2.5                                   & 31.50                              & 7.83                                    & 12.79        & 77.00           \\ \hline
-    LST                                     & 25.51                             & 9.23                                   & 21.42       & 36.20       \\ \hline
-    \end{tabular}
-    \caption{Descriptive statistics.}
-\end{table}
+\input{tables/desc_stats.tex}
+
+% \begin{table}[b]
+%     \centering
+%     \begin{tabular}{|l|r|r|r|r|}
+%     \hline
+%     \multicolumn{1}{|c|}{\textbf{Variable}} & \multicolumn{1}{c|}{\textbf{Mean}} & \multicolumn{1}{c|}{\textbf{Std. Dev.}} & \textbf{Min} & \textbf{Max} \\ \hline
+%     Built-up area                           & 69.70                             & 107.06                                  & 0.00            & 1570.46      \\ \hline
+%     Night-lights                            & 2.19                              & 4.21                                   & 0.00            & 63.00           \\ \hline
+%     Forest cover                            & 24.89                              & 8.42                                    & 79.62        & 120.00          \\ \hline
+%     PM2.5                                   & 31.50                              & 7.83                                    & 12.79        & 77.00           \\ \hline
+%     LST                                     & 25.51                             & 9.23                                   & 21.42       & 36.20       \\ \hline
+%     \end{tabular}
+%     \caption{Descriptive statistics.}
+% \end{table}
 
 Our smallest unit of measurement is the shrid, an area unit used by the Socioeconomic High-resolution Rural-Urban Geographic Platform for India (SHRUG). It is a village or town unit that has had consistent borders since 1991. This subnational resolution allows us to vastly expand the statistical power of our tests, which becomes relevant in our estimation tasks later.
 
@@ -150,14 +156,14 @@ For environmental degradation, we measure air quality, forest cover, and land su
 We estimate a simple model of the EKC, using our compound indices across 32,634 \textit{shrids} located within the two states. First, we construct our indices with equal weights $w_i$ across variables:
 
 \begin{align*}
-    EconIndex_i = & w_1(NTL_i) + w_2(Builtup_i) \\
-    EnvIndex_i = & w_1(AQI_i) + w_2(ForestCover_i) + w_3(LST_i)
+    \rm{EconIndex}_i &=  w_1(\rm{NTL}_i) + w_2(\rm{Builtup}_i) \\
+    \rm{EnvIndex}_i &=  w_1(\rm{AQI}_i) + w_2(\rm{ForestCover}_i) + w_3(\rm{LST}_i)
 \end{align*}
 
 where $\sum_{i=1}^{n}w_i = 1$ and $w_i = w_j \forall i, j$ for each Index. We run the Hausman test and find that the fixed effect estimators are more suitable for our data. Thus, we estimate a quadratic fixed-effects model in two epochs:
 
 \[
-EnvIndex_{it} = \beta_0 + \beta_1(EconIndex_{it}) + \beta_2(EconIndex_{it}^2) + \eta_i + \epsilon_{it} 
+    \rm{EconIndex}_{it} = \beta_0 + \beta_1(\rm{EnvIndex}_{it}) + \beta_2(\rm{EnvIndex}_{it}^2) + \eta_i + \epsilon_{it} 
 \]
 
 where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and $\epsilon_{it}$ represents the stochastic error term.
@@ -167,8 +173,8 @@ where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and
     \begin{tabular}{l|rrrr}
     \hline
     \multicolumn{1}{c}{\textbf{}} & \multicolumn{1}{c}{\textbf{Coef.}} & \multicolumn{1}{c}{\textbf{Std. Err.}} & \multicolumn{1}{c}{\textbf{t}} & \textbf{P\textgreater{}t} \\ \hline
-    $EconIndex$                     & 0.0242\textsuperscript{***}                             & 0.0004                                 & 61.547     & 0.000                     \\ 
-    $EconIndex^2$                   & -0.0002\textsuperscript{***}                            & 0.0001                                 & -18.148    & 0.000                    
+    EconIndex                     & 0.0242\textsuperscript{***}                             & 0.0004                                 & 61.547     & 0.000                     \\ 
+    EconIndex$^2$                   & -0.0002\textsuperscript{***}                            & 0.0001                                 & -18.148    & 0.000                    
     \\ \hline        
 \end{tabular}
 \caption{First epoch regression results. *** represent significance at the 1\% level.}
@@ -180,8 +186,8 @@ where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and
     \begin{tabular}{l|rrrr}
     \hline
     \multicolumn{1}{c}{\textbf{}} & \multicolumn{1}{c}{\textbf{Coef.}} & \multicolumn{1}{c}{\textbf{Std. Err.}} & \multicolumn{1}{c}{\textbf{t}} & \textbf{P\textgreater{}t} \\ \hline
-    $EconIndex$                     & -0.2366\textsuperscript{***}                             & 0.0332                                 & -7.1136     & 0.000                     \\ 
-    $EconIndex^2$                   & 0.0073\textsuperscript{***}                            & 0.0016                                 & 4.7800    & 0.000                    
+    EconIndex                     & -0.2366\textsuperscript{***}                             & 0.0332                                 & -7.1136     & 0.000                     \\ 
+    EconIndex$^2$                   & 0.0073\textsuperscript{***}                            & 0.0016                                 & 4.7800    & 0.000                    
     \\ \hline        
 \end{tabular}
 \caption{Second epoch regression results. *** represent significance at the 1\% level.}

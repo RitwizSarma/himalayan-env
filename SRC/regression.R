@@ -18,7 +18,7 @@ library(stargazer)
 # }
 gen_regtable <- function(star, fname="default") {
   require(glue)
-  cat(star, file=glue("DOC/tables/reg_outp_{fname}.tex"), sep = '\n')
+  cat(star, file=glue("himalayan-env/DOC/tables/reg_outp_{fname}.tex"), sep = '\n')
 }
 standard_scaler <- function(x) {
   x_mean <- mean(x, na.rm = TRUE)
@@ -107,15 +107,15 @@ env$env_index_sq <- env$env_index * env$env_index
 
 econ_orig <- econ
 env_orig <- env
-
+rm(env_pca, env_indices)
 
 # SELECTING SAMPLE
 # env <- env[env$year > 1999 & env$year < 2021, ]
 
 # econ <- econ[econ$year > 2000 & econ$year < 2011, ]
-# env <- env[env$year > 1999 & env$year < 2011, ]
-# econ <- econ[econ$year > 2010 & econ$year < 2021, ]
-# env <- env[env$year > 2010 & env$year < 2021, ]
+# env <- env[env$year > 2000 & env$year < 2011, ]
+econ <- econ[econ$year > 2010 & econ$year < 2021, ]
+env <- env[env$year > 2010 & env$year < 2021, ]
 
 # econ <- econ[econ$year %in% c(2000,2005,2010,2015,2020), ]
 # env <- env[env$year %in% c(2001,2005,2010,2015,2020), ]
@@ -123,10 +123,10 @@ env_orig <- env
 # econ <- econ[econ$year %in% c(2020, 2015), ]
 # env <- env[env$year %in% c(2020, 2015), ]
 
-econ <- econ[econ$year %in% c(2010, 2005, 2001), ]
-env <- env[env$year %in% c(2010, 2005, 2001), ]
-econ$year[econ$year == 2001] <- 2000
-env$year[env$year == 2001] <- 2000
+# econ <- econ[econ$year %in% c(2010, 2005, 2001), ]
+# env <- env[env$year %in% c(2010, 2005, 2001), ]
+# econ$year[econ$year == 2001] <- 2000
+# env$year[env$year == 2001] <- 2000
 
 
 econ <- econ[econ$shrid %in% env$shrid, ]
@@ -178,30 +178,31 @@ fe3_cov.mat <- vcovHC(fe_model3, type="HC1")
 gen_regtable(fe_model2, fe_model3, fname = "mod1_stdized_epoch1", title="Regression results from Model 1 for Epoch 1.", s.error=c(sqrt(diag(fe2_cov.mat)), sqrt(diag(fe3_cov.mat))))
 
 
-desc_stats <- stargazer()
 
-
-
+data <- merge(econ, env, by=c("shrid", "year"))
+data <- merge(data, ghsl, by=c("shrid", "year"), all.x=TRUE)
+desc_stats <- stargazer(data)
+cat(desc_stats,file = "himalayan-env/DOC/tables/desc_stats.tex", sep="\n")
 
 
 
 pdata1 <- merge(econ, env, by=c("shrid", "year"))
 pdata1 <- pdata.frame(pdata1, index = c("shrid", "year"))
 
-fe_model <- plm(ntl_mean ~ env_index + env_index_sq, data = pdata1, model = "within")
+fe_model <- plm(ntl_mean_st ~ env_index + env_index_sq, data = pdata1, model = "within")
 coeftest(fe_model, function(x) vcovHC(x, type = 'sss', cluster="group"))
-re_model <- plm(ntl_mean ~ env_index + env_index_sq, data = pdata1, model = "random")
+re_model <- plm(ntl_mean_st ~ env_index + env_index_sq, data = pdata1, model = "random")
 coeftest(re_model, function(x) vcovHC(x, type = 'HC1'))
 phtest(fe_model, re_model)
 
 
 pdt1 <- merge(econ, env, by=c("shrid", "year"))
-pdt1 <- pdt1 %>% rename(VCF_LST_PC = env_index, VCF_LST_PC2 = env_index_sq)
+pdt1 <- pdt1 %>% rename(VCF_PM_PC = env_index, VCF_PM_PC2 = env_index_sq)
 pdt1 <- pdata.frame(pdt1, index = c("shrid", "year"))
 
-fe_mod1 <- plm(ntl_mean ~ VCF_LST_PC + VCF_LST_PC2, data = pdt1, model = "within")
+fe_mod1 <- plm(ntl_mean_st ~ VCF_PM_PC + VCF_PM_PC2, data = pdt1, model = "within")
 coeftest(fe_mod1, function(x) vcovHC(x, type = 'sss', cluster="group"))
-re_mod1 <- plm(ntl_mean ~ env_index + env_index_sq, data = pdt1, model = "random")
+re_mod1 <- plm(ntl_mean ~ VCF_PM_PC + VCF_PM_PC2, data = pdt1, model = "random")
 coeftest(re_mod1, function(x) vcovHC(x, type = 'HC1'))
 phtest(fe_mod1, re_mod1)
 
@@ -210,9 +211,9 @@ pdt2 <- merge(econ, env, by=c("shrid", "year"))
 pdt2 <- pdt2 %>% rename(VCF_LST_UW = env_index, VCF_LST_UW2 = env_index_sq)
 pdt2 <- pdata.frame(pdt2, index = c("shrid", "year"))
 
-fe_mod2 <- plm(ntl_mean ~ VCF_LST_UW + VCF_LST_UW2, data = pdt2, model = "within")
+fe_mod2 <- plm(ntl_mean_st ~ VCF_LST_UW + VCF_LST_UW2, data = pdt2, model = "within")
 coeftest(fe_mod2, function(x) vcovHC(x, type = 'HC1'))
-re_mod2 <- plm(ntl_mean ~ env_index + env_index_sq, data = pdt2, model = "random")
+re_mod2 <- plm(ntl_mean_st ~ VCF_LST_UW + VCF_LST_UW2, data = pdt2, model = "random")
 coeftest(re_mod2, function(x) vcovHC(x, type = 'HC1'))
 phtest(fe_mod2, re_mod2)
 
@@ -220,15 +221,41 @@ phtest(fe_mod2, re_mod2)
 pdt3 <- merge(econ, env, by=c("shrid", "year"))
 pdt3 <- pdata.frame(pdt3, index = c("shrid", "year"))
 
-fe_mod3 <- plm(ntl_mean ~ env_index + env_index_sq, data = pdt3, model = "within")
-coeftest(fe_model, function(x) vcovHC(x, type = 'HC1'))
-re_mod3 <- plm(ntl_mean ~ env_index + env_index_sq, data = pdt3, model = "random")
-coeftest(re_model, function(x) vcovHC(x, type = 'HC1'))
+fe_mod3 <- plm(ntl_mean_st ~ env_index + env_index_sq, data = pdt3, model = "within")
+coeftest(fe_mod3, function(x) vcovHC(x, type = 'sss', cluster="group"))
+re_mod3 <- plm(ntl_mean_st ~ env_index + env_index_sq, data = pdt3, model = "random")
+coeftest(re_mod3, function(x) vcovHC(x, type = 'HC1'))
 phtest(fe_mod3, re_mod3)
+
+
+pdt4 <- merge(econ, env, by=c("shrid", "year"))
+pdt4 <- pdt4 %>% rename(VCF_PM_PC = env_index, VCF_PM_PC2 = env_index_sq)
+pdt4 <- pdata.frame(pdt4, index = c("shrid", "year"))
+
+fe_mod4 <- plm(ntl_mean_st ~ VCF_PM_PC + VCF_PM_PC2, data = pdt4, model = "within")
+coeftest(fe_mod4, function(x) vcovHC(x, type = 'sss', cluster="group"))
+re_mod4 <- plm(ntl_mean ~ VCF_PM_PC + VCF_PM_PC2, data = pdt4, model = "random")
+coeftest(re_mod4, function(x) vcovHC(x, type = 'HC1'))
+phtest(fe_mod4, re_mod4)
+
+
+pdt5 <- merge(econ, env, by=c("shrid", "year"))
+pdt5 <- pdt5 %>% rename(VCF_LST_UW = env_index, VCF_LST_UW2 = env_index_sq)
+pdt5 <- pdata.frame(pdt5, index = c("shrid", "year"))
+
+fe_mod5 <- plm(ntl_mean_st ~ VCF_LST_UW + VCF_LST_UW2, data = pdt5, model = "within")
+coeftest(fe_mod5, function(x) vcovHC(x, type = 'HC1'))
+re_mod5 <- plm(ntl_mean_st ~ VCF_LST_UW + VCF_LST_UW2, data = pdt5, model = "random")
+coeftest(re_mod5, function(x) vcovHC(x, type = 'HC1'))
+phtest(fe_mod5, re_mod5)
+
 
 
 fe_cov.mat <- vcovHC(fe_model, type="sss", cluster="group")
 fe2_cov.mat <- vcovHC(fe_mod1, type="sss", cluster="group")
 fe3_cov.mat <- vcovHC(fe_mod2, type="sss", cluster="group")
-st <- stargazer(fe_model, fe_mod1, fe_mod2, omit.stat=c("LL","ser", "f", "adj.rsq"), title="Regression results from Model 1 for Epoch 1.", se = list(fe_cov.mat, fe2_cov.mat, fe3_cov.mat))
-gen_regtable(st, fname = "mod1_stdized_epoch1")
+fe4_cov.mat <- vcovHC(fe_mod3, type="sss", cluster="group")
+fe5_cov.mat <- vcovHC(fe_mod4, type="sss", cluster="group")
+fe6_cov.mat <- vcovHC(fe_mod5, type="sss", cluster="group")
+st <- stargazer(fe_model, fe_mod1, fe_mod2, fe_mod3, fe_mod4, fe_mod5, omit.stat=c("LL","ser", "f", "adj.rsq"), title="Regression results from Model 1.", digits = 3, se = list(fe_cov.mat, fe2_cov.mat, fe3_cov.mat, fe4_cov.mat, fe5_cov.mat, fe6_cov.mat))
+gen_regtable(st, fname = "mod1_stdized_epoch12")

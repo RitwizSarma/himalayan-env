@@ -1,0 +1,15 @@
+	(1)	(2)
+VARIABLES	index_econ_pca	std_NTL
+		
+index_env	0.0518***	-0.00321
+	(0.00373)	(0.00235)
+sq_index_env_full	0.0816***	0.0930***
+	(0.00217)	(0.00175)
+Constant	0.0348***	0.00212
+	(0.00357)	(0.00276)
+		
+Observations	130,344	651,720
+R-squared	0.045	0.041
+Number of xtid	32,586	32,586
+Robust standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

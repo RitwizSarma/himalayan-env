@@ -9,25 +9,79 @@
 \subtitle{Balancing the Economy-Environment Trade-off}
 \date{March 4, 2025}
 \author{Ritwiz Sarma and Riju Garg}
-\institute{Madras School of Economics}
+\institute{Madras School of Economics\\[3mm]Presented at the 59th Annual Conference of the Indian Econometric Society.}
 \begin{document}
     \maketitle
     \begin{frame}{The Trade-off Exists\ldots} % perhaps two onlyenvs, infra side (graphs) vs sustainability side (articles)
+        \begin{onlyenv}<1>
+        \begin{columns}
+        \begin{column}{.45\textwidth}
         \begin{itemize}
-            \item Infrastructure growth is helpful for 
-            \item There is heavy infra investment taking place in the Himalayas.
+            \item Why build infrastructure?
+            \begin{itemize}
+                \item Network effects, economic growth
+                \item Administrative, defense reasons
+                \item Political incentives
+            \end{itemize}
             % more stuff here
-            \pause
+        \vspace*{4.5em}
+        \end{itemize}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{images/presentation/ntl_trend.png}
+                \vspace{2mm}
+                \includegraphics[width=\textwidth]{images/presentation/ghsl_trend.png}
+            \end{figure}
+        \end{column}
+        \end{columns}
+        \end{onlyenv}
+        \begin{onlyenv}<2>
+        \begin{columns}
+        \begin{column}{.45\textwidth}
+        \begin{itemize}
+            \item Why build infrastructure?
+            \begin{itemize}
+                \item Network effects, economic growth
+                \item Administrative, defense reasons
+                \item Political incentives
+            \end{itemize}
             \item But then, there is a growing \textit{long-run} and \textit{human} cost.
         \end{itemize}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{images/presentation/env_news.png}
+            \end{figure}
+        \end{column}
+        \end{columns}
+        \end{onlyenv}
+        
     \end{frame}
-
-    \begin{frame}{\ldots{}But Do We Measure It Right?} % i feel the need, the need to read
+%fix this
+    \begin{frame}{\ldots{}But Do We Measure It Right?} %i feel the need, the need to read
+        \begin{columns}
+        \begin{column}{.45\textwidth}
+        \textbf{Environmental Kuznets Curve}
         \begin{itemize}
-            \item The Environmental Kuznets Curve (EKC)
-            \item The IRAM Models
-            \item 
+            \item Inverted-U relationship between economic growth and environmental degradation.
+            \item Contradictory findings in recent literature.
         \end{itemize}
+        \end{column}
+        \begin{column}{.45\textwidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=1.1\textwidth]{images/kuznets_scen.png}
+                % \vspace{1mm}
+                \begin{center}
+                    \scriptsize Different EKC adaptations from \textcite{dasgupta2002}.
+                \end{center}
+                % \caption{Different EKC adaptations from \textcite{dasgupta2002}.}
+            \end{figure}
+        \end{column}
+        \end{columns}
     \end{frame}
 
     \begin{frame}{Questions}
@@ -54,10 +108,14 @@
     \end{frame}
 
     \section{Data}
-    \begin{frame}{Process} % explain what shrid is
+    \begin{frame}{Dataset Construction} % explain what shrid is
         \begin{description}
-            \item[Unit] Our basic unit is the \textit{shrid}, from the SHRUG v2, Development Data Lab.
-            \item[Econ] 
+            \item[Shrid] Usually single village/town, can be aggregation if merged/separated between 1990-2013.
+            \item[Indices] Standardization, then take the:
+            \begin{itemize}
+                \item arithmetic mean, or
+                \item principal component 
+            \end{itemize}
         \end{description}
     \end{frame}
     \begin{frame}{Economic Indicators}
@@ -105,12 +163,12 @@
         \begin{description}
             \item[Why?] Relevant for infra growth, also used for horizontal devolution \parencite{wang2003,finance2020}.
             \item[Source] SHRUG v2, Development Data Lab, Terra MODIS (NASA).
-        \end{description}        
+        \end{description}
     \end{onlyenv}
     \end{frame}
 
-    \section{Model}
-    \begin{frame}{Model 1: Entire Time Period}
+    \section{Model and Findings}
+    \begin{frame}{General Quadratic Model}
         \begin{equation*}
             \text{Econ}_{it} = \beta_0 + \beta_1(\text{Env}_{it}) + \beta_1(\text{Env}_{it}^2) + \eta_i + \gamma_t + \epsilon_{it} 
         \end{equation*}\\[1em]
@@ -122,12 +180,6 @@
             \item $\gamma_i$ are year fixed effects.
             \item $\epsilon_{it}$ is the idiosyncratic error term.
         \end{itemize}
-    \end{frame}
-
-    % more models
-
-    \begin{frame}{Indices}
-        
     \end{frame}
 
     \begin{frame}{Introduction}

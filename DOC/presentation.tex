@@ -1,0 +1,237 @@
+\documentclass{beamer}
+\usepackage[style=authoryear,urldate=long,backend=biber,natbib=true]{biblatex}
+\usepackage{booktabs}
+\bibliography{references} 
+
+
+\usetheme[sectionpage=simple,numbering=fraction,progressbar=frametitle]{metropolis}           % Use metropolis theme
+\title{The Himalayan Tightrope}
+\subtitle{Balancing the Economy-Environment Trade-off}
+\date{March 4, 2025}
+\author{Ritwiz Sarma and Riju Garg}
+\institute{Madras School of Economics}
+\begin{document}
+    \maketitle
+    \begin{frame}{The Trade-off Exists\ldots} % perhaps two onlyenvs, infra side (graphs) vs sustainability side (articles)
+        \begin{itemize}
+            \item Infrastructure growth is helpful for 
+            \item There is heavy infra investment taking place in the Himalayas.
+            % more stuff here
+            \pause
+            \item But then, there is a growing \textit{long-run} and \textit{human} cost.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{\ldots{}But Do We Measure It Right?} % i feel the need, the need to read
+        \begin{itemize}
+            \item The Environmental Kuznets Curve (EKC)
+            \item The IRAM Models
+            \item 
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Questions}
+        \begin{itemize}
+            \item How does \textit{infrastructure-led} growth relate to environmental degradation?
+            \item Does the Environmental Kuznets curve hold?
+            \item Do macro-level models hold for: 
+            \begin{itemize} % maybe enumerate?
+                \item sensitive ecologies?
+                \item micro-level data?
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{This Paper}
+        Our answer: Not well.\\[2em]
+
+        \begin{itemize}
+            % \item We select five indicators for growth and sustainability
+            \item We build a high-res geospatial dataset at village/town level
+            \item We estimate the EKC: 5 indicators, 20 years of data
+            \item We focus on two Himalayan states, where incentives exist for both infrastructure investment and ecological sustainability 
+        \end{itemize}
+    \end{frame}
+
+    \section{Data}
+    \begin{frame}{Process} % explain what shrid is
+        \begin{description}
+            \item[Unit] Our basic unit is the \textit{shrid}, from the SHRUG v2, Development Data Lab.
+            \item[Econ] 
+        \end{description}
+    \end{frame}
+    \begin{frame}{Economic Indicators}
+        \textbf{Night lights}
+        \begin{description}
+            \item[Why?] Strong correlation with GDP growth even at subnational level \parencite{doll2006}.
+            \item[Source] NASA, harmonized across satellites by \textcite{Li2020}, yearly data.
+        \end{description}
+        \pause
+        \textbf{Built-up area}
+        \begin{description}
+            \item[Why?] Detects economic activity at highly local levels \parencite{baragwanath2021}.
+            \item[Source] ESA, Copernicus GHSL product, five-year intervals.
+        \end{description}
+    \end{frame}
+    
+    \begin{frame}{Environmental Indicators}
+    \begin{onlyenv}<1>
+        \textbf{PM2.5 air quality}
+        \begin{description}
+            \item[Why?] Respected measure of environmental degradation \parencite{caviglia2009}.
+            \item[Source] SHRUG v2, Development Data Lab cf.~\textcite{donkelaar2021}.
+        \end{description}
+        \pause{}
+        \textbf{Land surface temperature}
+        \begin{description}
+            \item[Why?] Long-run changes from environmental degradation, global warming \parencite{esa}.
+            \item[Source] NASA MODIS, yearly aggregates from 8-weekly data.
+        \end{description}
+    \end{onlyenv}
+    \begin{onlyenv}<2>
+        \textbf{PM2.5 air quality}
+        \begin{description}
+            \item[Why?] Respected measure of environmental degradation \parencite{caviglia2009}.
+            \item[Source] SHRUG v2, Development Data Lab cf.~\textcite{donkelaar2021}.
+        \end{description}
+        \textbf{Land surface temperature}
+        \begin{description}
+            \item[Why?] Long-run changes from environmental degradation, global warming \parencite{esa}.
+            \item[Source] NASA MODIS, yearly aggregates from 8-weekly data.
+        \end{description}
+    \end{onlyenv}
+    \begin{onlyenv}<3>
+        \textbf{Forest cover}
+        \begin{description}
+            \item[Why?] Relevant for infra growth, also used for horizontal devolution \parencite{wang2003,finance2020}.
+            \item[Source] SHRUG v2, Development Data Lab, Terra MODIS (NASA).
+        \end{description}        
+    \end{onlyenv}
+    \end{frame}
+
+    \section{Model}
+    \begin{frame}{Model 1: Entire Time Period}
+        \begin{equation*}
+            \text{Econ}_{it} = \beta_0 + \beta_1(\text{Env}_{it}) + \beta_1(\text{Env}_{it}^2) + \eta_i + \gamma_t + \epsilon_{it} 
+        \end{equation*}\\[1em]
+        where:
+        \begin{itemize}
+            \item Econ is the economic index variable.
+            \item Env is the environmental index variable.
+            \item $\eta_i$ are \textit{shrid}-level fixed effects.
+            \item $\gamma_i$ are year fixed effects.
+            \item $\epsilon_{it}$ is the idiosyncratic error term.
+        \end{itemize}
+    \end{frame}
+
+    % more models
+
+    \begin{frame}{Indices}
+        
+    \end{frame}
+
+    \begin{frame}{Introduction}
+        \begin{itemize}
+            \item Investigates the trade-off between economic growth and environmental sustainability.
+            \item Uses high-resolution geospatial data for Himachal Pradesh and Uttarakhand.
+            \item Develops a novel dataset of economic and environmental indicators over two decades.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Context: Why Build Infrastructure?}
+        \begin{itemize}
+            \item Economic, political, and administrative motivations.
+            \item Border security concerns with China, Nepal, and Bhutan.
+            \item Economic transition from agriculture to manufacturing and services.
+            \item Role of infrastructure in connectivity, digital access, and energy generation.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Theoretical Framework: Environmental Kuznets Curve (EKC)}
+        \begin{itemize}
+            \item Hypothesis: Inverted-U relationship between economic growth and environmental degradation.
+            \item Early stages: Growth leads to increased degradation.
+            \item Later stages: Growth enables sustainability efforts.
+            \item Contradictory findings in recent literature.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Data}
+        \begin{itemize}
+            \item Study unit: SHRUG village/town-level data.
+            \item Economic indicators: Night-time lights, built-up area.
+            \item Environmental indicators: Air quality (PM2.5), forest cover, land surface temperature.
+            \item Data sources: NASA MODIS, GHSL, VIIRS, DMSP-OLS.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Findings: Temporal Shifts in Himachal Pradesh}
+        \begin{itemize}
+            \item Early 2000s - Mid 2000s: Forest cover increases in northern districts, declines in southern regions.
+            \item 2010s: Growth in night-time lights, economic activity expands.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Findings: Temporal Shifts in Uttarakhand}
+        \begin{itemize}
+            \item Early 2000s - Mid 2000s: Forest cover increases in the north, declines in the south.
+            \item Mid 2000s - 2010s: Widespread forest cover loss.
+            \item Post-2010: Recovery in forest cover.
+            \item Night-time lights show growth across all periods.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Model Specification}
+        \begin{itemize}
+            \item Quadratic fixed-effects model:
+            \item Economic Index (NTL, built-up area) vs. Environmental Index (PM2.5, forest cover, LST).
+            \item Fixed effects used based on Hausman test.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Regression Results: First Epoch}
+        \begin{itemize}
+            \item Estimated relationship follows the EKC (inverted U-shape).
+            \item Economic growth initially leads to environmental degradation, then stabilizes.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Regression Results: Second Epoch}
+        \begin{itemize}
+            \item Relationship reverses to a U-shape.
+            \item Economic growth initially reduces degradation but later exacerbates it.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Discussion}
+        \begin{itemize}
+            \item Results suggest heterogeneity across time.
+            \item EKC not stable in ecologically sensitive regions.
+            \item Potential tipping point in Himalayan environmental dynamics.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Policy Implications}
+        \begin{itemize}
+            \item Need for localized, dynamic policy frameworks.
+            \item Infrastructure planning should integrate ecological risk assessments.
+            \item Emphasis on renewable energy, sustainable urban planning.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Conclusion}
+        \begin{itemize}
+            \item Economy-environment trade-offs in the Himalayas are complex.
+            \item EKC model does not universally apply.
+            \item Future research: pinpoint specific projects to build a treatment group for causal analysis.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[standout]
+        Thank you.
+        
+        Open to questions/comments.
+    \end{frame}
+    
+
+\end{document}

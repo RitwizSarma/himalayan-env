@@ -32,7 +32,7 @@ matrix loadings = e(L)
 matrix list loadings
 local W1 = loadings[1,1]
 local W2 = loadings[2,1]
-generate index_env_model2 = `W1'*std_vcfd + `w2'*std_pm25 //PCA generated index for model 2
+generate index_env_model2 = `W1'*std_vcfd + `W2'*std_pm25 //PCA generated index for model 2
 generate index_model2_sq_pca = index_env_model2^2
 generate index_envm_uw = (std_vcfd + std_pm25)/2
 generate index_envm_uw_sq = index_envm_uw^2

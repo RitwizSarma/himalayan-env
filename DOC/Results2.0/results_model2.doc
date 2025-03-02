@@ -1,0 +1,27 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx2592\clbrdrt\brdrs\cellx5040\clbrdrt\brdrs\cellx7056\clbrdrt\brdrs\cellx9504\clbrdrt\brdrs\cellx11520\clbrdrt\brdrs\cellx13968\clbrdrt\brdrs\cellx15984\clbrdrt\brdrs\cellx18432\clbrdrt\brdrs\cellx20448
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\qc (4)\cell\qc (5)\cell\qc (6)\cell\qc (7)\cell\qc (8)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx2592\cellx5040\cellx7056\cellx9504\cellx11520\cellx13968\cellx15984\cellx18432\cellx20448
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx2592\clbrdrb\brdrs\cellx5040\clbrdrb\brdrs\cellx7056\clbrdrb\brdrs\cellx9504\clbrdrb\brdrs\cellx11520\clbrdrb\brdrs\cellx13968\clbrdrb\brdrs\cellx15984\clbrdrb\brdrs\cellx18432\clbrdrb\brdrs\cellx20448
+\ql VARIABLES\cell\qc index_env_model2\cell\qc index_envm_uw\cell\qc index_env_model2\cell\qc index_envm_uw\cell\qc index_env_model2\cell\qc index_envm_uw\cell\qc index_env_model2\cell\qc index_envm_uw\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx2592\cellx5040\cellx7056\cellx9504\cellx11520\cellx13968\cellx15984\cellx18432\cellx20448
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql index_econ_pca\cell\qc 0.562***\cell\qc 0.397***\cell\qc \cell\qc \cell\qc -0.367***\cell\qc -0.259***\cell\qc \cell\qc \cell\row
+\ql \cell\qc (0.00860)\cell\qc (0.00608)\cell\qc \cell\qc \cell\qc (0.0107)\cell\qc (0.00760)\cell\qc \cell\qc \cell\row
+\ql index_econ_pca_sq\cell\qc -0.0150***\cell\qc -0.0106***\cell\qc \cell\qc \cell\qc -0.0109***\cell\qc -0.00769***\cell\qc \cell\qc \cell\row
+\ql \cell\qc (0.000886)\cell\qc (0.000626)\cell\qc \cell\qc \cell\qc (0.00171)\cell\qc (0.00121)\cell\qc \cell\qc \cell\row
+\ql index_econ_uw\cell\qc \cell\qc \cell\qc 0.795***\cell\qc 0.562***\cell\qc \cell\qc \cell\qc -0.518***\cell\qc -0.367***\cell\row
+\ql \cell\qc \cell\qc \cell\qc (0.0122)\cell\qc (0.00860)\cell\qc \cell\qc \cell\qc (0.0152)\cell\qc (0.0107)\cell\row
+\ql index_econ_uw_sq\cell\qc \cell\qc \cell\qc -0.0299***\cell\qc -0.0212***\cell\qc \cell\qc \cell\qc -0.0218***\cell\qc -0.0154***\cell\row
+\ql \cell\qc \cell\qc \cell\qc (0.00177)\cell\qc (0.00125)\cell\qc \cell\qc \cell\qc (0.00342)\cell\qc (0.00242)\cell\row
+\ql Constant\cell\qc 0.134***\cell\qc 0.0946***\cell\qc 0.134***\cell\qc 0.0946***\cell\qc 0.110***\cell\qc 0.0777***\cell\qc 0.110***\cell\qc 0.0777***\cell\row
+\ql \cell\qc (0.00203)\cell\qc (0.00144)\cell\qc (0.00203)\cell\qc (0.00144)\cell\qc (0.00397)\cell\qc (0.00280)\cell\qc (0.00397)\cell\qc (0.00280)\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 65,250\cell\qc 65,250\cell\qc 65,250\cell\qc 65,250\cell\qc 65,250\cell\qc 65,250\cell\qc 65,250\cell\qc 65,250\cell\row
+\ql R-squared\cell\qc 0.161\cell\qc 0.161\cell\qc 0.161\cell\qc 0.161\cell\qc 0.085\cell\qc 0.085\cell\qc 0.085\cell\qc 0.085\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx2592\clbrdrb\brdrs\cellx5040\clbrdrb\brdrs\cellx7056\clbrdrb\brdrs\cellx9504\clbrdrb\brdrs\cellx11520\clbrdrb\brdrs\cellx13968\clbrdrb\brdrs\cellx15984\clbrdrb\brdrs\cellx18432\clbrdrb\brdrs\cellx20448
+\ql Number of xtid\cell\qc 32,625\cell\qc 32,625\cell\qc 32,625\cell\qc 32,625\cell\qc 32,625\cell\qc 32,625\cell\qc 32,625\cell\qc 32,625\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}

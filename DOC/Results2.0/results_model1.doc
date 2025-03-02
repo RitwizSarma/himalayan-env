@@ -1,0 +1,23 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx2160\clbrdrt\brdrs\cellx4176\clbrdrt\brdrs\cellx6624\clbrdrt\brdrs\cellx8640\clbrdrt\brdrs\cellx10656\clbrdrt\brdrs\cellx13104\clbrdrt\brdrs\cellx15120
+\ql \cell\qc (1)\cell\qc (2)\cell\qc (3)\cell\qc (4)\cell\qc (5)\cell\qc (6)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx2160\cellx4176\cellx6624\cellx8640\cellx10656\cellx13104\cellx15120
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx4176\clbrdrb\brdrs\cellx6624\clbrdrb\brdrs\cellx8640\clbrdrb\brdrs\cellx10656\clbrdrb\brdrs\cellx13104\clbrdrb\brdrs\cellx15120
+\ql VARIABLES\cell\qc index_env_pca\cell\qc index_env_model2\cell\qc index_envm_uw\cell\qc index_env_pca\cell\qc index_env_model2\cell\qc index_envm_uw\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx2160\cellx4176\cellx6624\cellx8640\cellx10656\cellx13104\cellx15120
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql std_NTL\cell\qc 0.0912***\cell\qc -0.00247\cell\qc -0.00175\cell\qc -0.0536***\cell\qc -0.175***\cell\qc -0.124***\cell\row
+\ql \cell\qc (0.00329)\cell\qc (0.00402)\cell\qc (0.00284)\cell\qc (0.00158)\cell\qc (0.00184)\cell\qc (0.00130)\cell\row
+\ql std_NTL_sq\cell\qc 0.0110***\cell\qc 0.0233***\cell\qc 0.0165***\cell\qc -0.00616***\cell\qc 0.00223***\cell\qc 0.00158***\cell\row
+\ql \cell\qc (0.000797)\cell\qc (0.000990)\cell\qc (0.000700)\cell\qc (0.000587)\cell\qc (0.000608)\cell\qc (0.000430)\cell\row
+\ql Constant\cell\qc 0.0423***\cell\qc 0.0312***\cell\qc 0.0220***\cell\qc 0.0892***\cell\qc 0.169***\cell\qc 0.119***\cell\row
+\ql \cell\qc (0.000972)\cell\qc (0.00121)\cell\qc (0.000855)\cell\qc (0.000810)\cell\qc (0.000884)\cell\qc (0.000625)\cell\row
+\ql \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\qc \cell\row
+\ql Observations\cell\qc 325,860\cell\qc 326,250\cell\qc 326,250\cell\qc 325,860\cell\qc 326,250\cell\qc 326,250\cell\row
+\ql R-squared\cell\qc 0.013\cell\qc 0.007\cell\qc 0.007\cell\qc 0.005\cell\qc 0.028\cell\qc 0.028\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx2160\clbrdrb\brdrs\cellx4176\clbrdrb\brdrs\cellx6624\clbrdrb\brdrs\cellx8640\clbrdrb\brdrs\cellx10656\clbrdrb\brdrs\cellx13104\clbrdrb\brdrs\cellx15120
+\ql Number of xtid\cell\qc 32,586\cell\qc 32,625\cell\qc 32,625\cell\qc 32,586\cell\qc 32,625\cell\qc 32,625\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}

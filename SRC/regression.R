@@ -90,7 +90,7 @@ get_pca_tests(env_vars)
 
 
 # BUILDING VARIABLE DATAFRAMES
-econ$econ_index <- (0.5*econ$ntl_mean) + (0.5*econ$ghsl_mean)
+econ$econ_index <- (0.5*econ$ntl_mean_st) + (0.5*econ$ghsl_mean_st)
 env$env_index <- (0.5*env$pm25_mean_st) + (0.5*env$vcfd_mean_st)
 
 econ_pca <- princomp(econ_vars, cor = TRUE, scores = TRUE)
@@ -103,7 +103,9 @@ env_indices <- env_pca$scores
 env_index <- env_indices[, "Comp.1"]
 env$env_index <- env_index
 
-env$env_index_sq <- env$env_index * env$env_index
+econ$ntl_mean_st_sq <- econ$ntl_mean_st * econ$ntl_mean_st
+econ$econ_index_sq <- econ$econ_index * econ$econ_index
+
 
 econ_orig <- econ
 env_orig <- env
@@ -142,18 +144,18 @@ pdata3 <- pdata.frame(pdata3, index = c("shrid", "year"))
 length(unique(econ$year))
 
 
-fe_model <- plm(ntl_mean ~ env_index + env_index_sq, data = pdata1, model = "within")
+fe_model <- plm(env_index ~ econ_index + econ_index_sq, data = pdata1, model = "within")
 coeftest(fe_model, function(x) vcovHC(x, type = 'HC1'))
-re_model <- plm(ntl_mean ~ env_index + env_index_sq, data = pdata1, model = "random")
+re_model <- plm(env_index ~ econ_index + econ_index_sq, data = pdata1, model = "random")
 coeftest(re_model, function(x) vcovHC(x, type = 'HC1'))
 # fe_logmodel <- plm(log(ntl_mean+0.00000001) ~ log(env_index+0.00000001), data = pdata1, model = "within")
 # re_logmodel <- plm(log(ntl_mean+0.00000001) ~ log(env_index+0.00000001), data = pdata1, model = "random")
 summary(fe_model)
 summary(re_model)
 
-fe_model2 <- plm(econ_index ~ env_index + env_index_sq, data = pdata2, model = "within")
+fe_model2 <- plm(env_index ~ econ_index + econ_index_sq, data = pdata2, model = "within")
 coeftest(fe_model2, function(x) vcovHC(x, type = 'HC1'))
-re_model2 <- plm(econ_index ~ env_index + env_index_sq, data = pdata2, model = "random")
+re_model2 <- plm(env_index ~ econ_index + econ_index_sq, data = pdata2, model = "random")
 coeftest(re_model2, function(x) vcovHC(x, type = 'HC1'))
 summary(fe_model2)
 summary(re_model2)
@@ -175,7 +177,14 @@ fe_cov.mat <- vcovHC(fe_model, type="HC1")
 fe2_cov.mat <- vcovHC(fe_model2, type="HC1")
 fe3_cov.mat <- vcovHC(fe_model3, type="HC1")
 
-gen_regtable(fe_model2, fe_model3, fname = "mod1_stdized_epoch1", title="Regression results from Model 1 for Epoch 1.", s.error=c(sqrt(diag(fe2_cov.mat)), sqrt(diag(fe3_cov.mat))))
+
+lm_model <- lm(env_index ~ econ_index + econ_index_sq, data = pdata2)
+coeftest(lm_model)
+
+
+st <- stargazer(fe_model, fe_model2, lm_model, omit.stat=c("LL","ser", "f", "adj.rsq"), title="Regression results from Model 1.", digits = 3)
+gen_regtable(st, fname = "mod3_pres")
+
 
 
 

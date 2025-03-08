@@ -1,0 +1,24 @@
+	(1)
+VARIABLES	index_env_model2
+	
+std_NTL	0.356***
+	(0.00277)
+std_NTL_sq	-0.0105***
+	(0.000713)
+1.post10	-0.158***
+	(0.00270)
+0b.post10#co.std_NTL	0
+	(0)
+1.post10#c.std_NTL	0.130***
+	(0.00446)
+0b.post10#co.std_NTL_sq	0
+	(0)
+1.post10#c.std_NTL_sq	0.00474***
+	(0.000983)
+Constant	0.0921***
+	(0.00209)
+	
+Observations	652,500
+R-squared	0.146
+Robust standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

@@ -7,9 +7,9 @@
 \usetheme[sectionpage=simple,numbering=fraction,progressbar=frametitle]{metropolis}           % Use metropolis theme
 \title{The Himalayan Tightrope}
 \subtitle{Balancing the Economy-Environment Trade-off}
-\date{March 4, 2025}
+\date{Madras School of Economics}
 \author{Ritwiz Sarma and Riju Garg}
-\institute{Madras School of Economics\\[3mm]Presented at the 59th Annual Conference of the Indian Econometric Society.}
+\institute{59th Annual Conference of the Indian Econometric Society,\\Banaras Hindu University, Varanasi UP\\March 4, 2025}
 \begin{document}
     \maketitle
     \begin{frame}{The Trade-off Exists\ldots} % perhaps two onlyenvs, infra side (graphs) vs sustainability side (articles)
@@ -47,7 +47,7 @@
                 \item Administrative, defense reasons
                 \item Political incentives
             \end{itemize}
-            \item But then, there is a growing \textit{long-run} and \textit{human} cost.
+            \item But there is a growing \textit{long-run} and \textit{human} cost.
         \end{itemize}
         \end{column}
         \begin{column}{.45\textwidth}
@@ -87,7 +87,7 @@
     \begin{frame}{Questions}
         \begin{itemize}
             \item How does \textit{infrastructure-led} growth relate to environmental degradation?
-            \item Does the Environmental Kuznets curve hold?
+            \item Does the Environmental Kuznets curve hold (at the subnational level)?
             \item Do macro-level models hold for: 
             \begin{itemize} % maybe enumerate?
                 \item sensitive ecologies?
@@ -108,15 +108,25 @@
     \end{frame}
 
     \section{Data}
-    \begin{frame}{Dataset Construction} % explain what shrid is
+    \begin{frame}{Dataset Construction}
+        \begin{onlyenv}<1>
         \begin{description}
-            \item[Shrid] Usually single village/town, can be aggregation if merged/separated between 1990-2013.
+            \item[Shrid] Our base unit of analysis. SHRUG-DevDataLab.\\Usually single village/town, can be aggregation if merged/separated between 1990-2013.
+            \item[Indicators] Satellite-based data on infrastructure growth and environmental degradation.
             \item[Indices] Standardization, then take the:
             \begin{itemize}
                 \item arithmetic mean, or
                 \item principal component 
             \end{itemize}
         \end{description}
+        \end{onlyenv}
+        \begin{onlyenv}<2>
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.9\textwidth]{images/shrid_desc.png}
+                \caption{Red circle shows Varanasi.}
+            \end{figure}
+        \end{onlyenv}
     \end{frame}
     \begin{frame}{Economic Indicators}
         \textbf{Night lights}
@@ -167,121 +177,175 @@
     \end{onlyenv}
     \end{frame}
 
+    \begin{frame}[standout]
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{images/ntl_hp.png}
+        \end{figure}
+    \end{frame}
+
     \section{Model and Findings}
     \begin{frame}{General Quadratic Model}
         \begin{equation*}
-            \text{Econ}_{it} = \beta_0 + \beta_1(\text{Env}_{it}) + \beta_1(\text{Env}_{it}^2) + \eta_i + \gamma_t + \epsilon_{it} 
+            \text{Env}_{it} = \beta_0 + \beta_1(\text{Econ}_{it}) + \beta_1(\text{Econ}_{it}^2) + \eta_i + \gamma_t + \epsilon_{it} 
+            % \text{Env}_{it} = \beta_0 + \beta_1(\text{Econ}_{it}) + \beta_1(\text{Econ}_{it}^2) + \eta_i + \epsilon_{it} 
         \end{equation*}\\[1em]
         where:
         \begin{itemize}
-            \item Econ is the economic index variable.
-            \item Env is the environmental index variable.
-            \item $\eta_i$ are \textit{shrid}-level fixed effects.
-            \item $\gamma_i$ are year fixed effects.
-            \item $\epsilon_{it}$ is the idiosyncratic error term.
+            \item $\text{Env}_{it}$ $=$ environmental index value at area $i$ at time $t$.
+            \item $\text{Econ}_{it}$ $=$ economic index value at area $i$ at time $t$.
+            \item $\eta_i$ $=$ \textit{shrid}-level fixed effects.
+            \item $\gamma_i$ $=$ year fixed effects.
+            \item $\epsilon_{it}$ $=$ idiosyncratic error term.
         \end{itemize}
     \end{frame}
 
-    \begin{frame}{Introduction}
+    \begin{frame}{Model 1: Night Lights}
+        \begin{onlyenv}<1>
+            \input{tables/reg_outp_mod1_pres.tex}
+        \end{onlyenv}
+        \begin{onlyenv}<2>
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\textwidth]{images/presentation/model1.png}
+            \end{figure}
+        \end{onlyenv}
+    \end{frame} % add graph
+
+    \begin{frame}{Model 2: Adding Built-up Area} % change 2 for econst
+        \begin{onlyenv}<1>
+            \input{tables/reg_outp_mod2_pres.tex}
+        \end{onlyenv}
+        \begin{onlyenv}<2>
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\textwidth]{images/presentation/model2.png}
+            \end{figure}
+        \end{onlyenv}
+    \end{frame} % add graph
+
+    \begin{frame}{Model 3: Adding Land Surface Temperature}
+        \begin{onlyenv}<1>
+            \input{tables/reg_outp_mod3_pres.tex}
+        \end{onlyenv}
+        \begin{onlyenv}<2>
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\textwidth]{images/presentation/model3.png}
+            \end{figure}
+        \end{onlyenv}
+    \end{frame} % add graph
+
+
+    % \begin{frame}{Model 4: Between Epochs}
+    %     \input{tables/reg_outp_mod1_pres.tex}
+    % \end{frame}
+
+    % \begin{frame}{Introduction}
+    %     \begin{itemize}
+    %         \item Investigates the trade-off between economic growth and environmental sustainability.
+    %         \item Uses high-resolution geospatial data for Himachal Pradesh and Uttarakhand.
+    %         \item Develops a novel dataset of economic and environmental indicators over two decades.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Context: Why Build Infrastructure?}
+    %     \begin{itemize}
+    %         \item Economic, political, and administrative motivations.
+    %         \item Border security concerns with China, Nepal, and Bhutan.
+    %         \item Economic transition from agriculture to manufacturing and services.
+    %         \item Role of infrastructure in connectivity, digital access, and energy generation.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Theoretical Framework: Environmental Kuznets Curve (EKC)}
+    %     \begin{itemize}
+    %         \item Hypothesis: Inverted-U relationship between economic growth and environmental degradation.
+    %         \item Early stages: Growth leads to increased degradation.
+    %         \item Later stages: Growth enables sustainability efforts.
+    %         \item Contradictory findings in recent literature.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Data}
+    %     \begin{itemize}
+    %         \item Study unit: SHRUG village/town-level data.
+    %         \item Economic indicators: Night-time lights, built-up area.
+    %         \item Environmental indicators: Air quality (PM2.5), forest cover, land surface temperature.
+    %         \item Data sources: NASA MODIS, GHSL, VIIRS, DMSP-OLS.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Findings: Temporal Shifts in Himachal Pradesh}
+    %     \begin{itemize}
+    %         \item Early 2000s - Mid 2000s: Forest cover increases in northern districts, declines in southern regions.
+    %         \item 2010s: Growth in night-time lights, economic activity expands.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Findings: Temporal Shifts in Uttarakhand}
+    %     \begin{itemize}
+    %         \item Early 2000s - Mid 2000s: Forest cover increases in the north, declines in the south.
+    %         \item Mid 2000s - 2010s: Widespread forest cover loss.
+    %         \item Post-2010: Recovery in forest cover.
+    %         \item Night-time lights show growth across all periods.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Model Specification}
+    %     \begin{itemize}
+    %         \item Quadratic fixed-effects model:
+    %         \item Economic Index (NTL, built-up area) vs. Environmental Index (PM2.5, forest cover, LST).
+    %         \item Fixed effects used based on Hausman test.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Regression Results: First Epoch}
+    %     \begin{itemize}
+    %         \item Estimated relationship follows the EKC (inverted U-shape).
+    %         \item Economic growth initially leads to environmental degradation, then stabilizes.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Regression Results: Second Epoch}
+    %     \begin{itemize}
+    %         \item Relationship reverses to a U-shape.
+    %         \item Economic growth initially reduces degradation but later exacerbates it.
+    %     \end{itemize}
+    % \end{frame}
+    
+    % \begin{frame}{Discussion}
+    %     \begin{itemize}
+    %         \item Results suggest heterogeneity across time.
+    %         \item EKC not stable in ecologically sensitive regions.
+    %         \item Potential tipping point in Himalayan environmental dynamics.
+    %     \end{itemize}
+    % \end{frame}
+    
+    \begin{frame}{Bottom Line}
         \begin{itemize}
-            \item Investigates the trade-off between economic growth and environmental sustainability.
-            \item Uses high-resolution geospatial data for Himachal Pradesh and Uttarakhand.
-            \item Develops a novel dataset of economic and environmental indicators over two decades.
+            \item Economy-environment trade-offs in the Himalayas - an ecologically-sensitive region - are complex.
+            \item EKC model fails when applied to localized contexts.
+            \item Future research: pinpoint specific projects to build a treatment group for causal analysis, new estimation methods including GMM, causal machine learning.
         \end{itemize}
     \end{frame}
-    
-    \begin{frame}{Context: Why Build Infrastructure?}
-        \begin{itemize}
-            \item Economic, political, and administrative motivations.
-            \item Border security concerns with China, Nepal, and Bhutan.
-            \item Economic transition from agriculture to manufacturing and services.
-            \item Role of infrastructure in connectivity, digital access, and energy generation.
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Theoretical Framework: Environmental Kuznets Curve (EKC)}
-        \begin{itemize}
-            \item Hypothesis: Inverted-U relationship between economic growth and environmental degradation.
-            \item Early stages: Growth leads to increased degradation.
-            \item Later stages: Growth enables sustainability efforts.
-            \item Contradictory findings in recent literature.
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Data}
-        \begin{itemize}
-            \item Study unit: SHRUG village/town-level data.
-            \item Economic indicators: Night-time lights, built-up area.
-            \item Environmental indicators: Air quality (PM2.5), forest cover, land surface temperature.
-            \item Data sources: NASA MODIS, GHSL, VIIRS, DMSP-OLS.
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Findings: Temporal Shifts in Himachal Pradesh}
-        \begin{itemize}
-            \item Early 2000s - Mid 2000s: Forest cover increases in northern districts, declines in southern regions.
-            \item 2010s: Growth in night-time lights, economic activity expands.
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Findings: Temporal Shifts in Uttarakhand}
-        \begin{itemize}
-            \item Early 2000s - Mid 2000s: Forest cover increases in the north, declines in the south.
-            \item Mid 2000s - 2010s: Widespread forest cover loss.
-            \item Post-2010: Recovery in forest cover.
-            \item Night-time lights show growth across all periods.
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Model Specification}
-        \begin{itemize}
-            \item Quadratic fixed-effects model:
-            \item Economic Index (NTL, built-up area) vs. Environmental Index (PM2.5, forest cover, LST).
-            \item Fixed effects used based on Hausman test.
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Regression Results: First Epoch}
-        \begin{itemize}
-            \item Estimated relationship follows the EKC (inverted U-shape).
-            \item Economic growth initially leads to environmental degradation, then stabilizes.
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Regression Results: Second Epoch}
-        \begin{itemize}
-            \item Relationship reverses to a U-shape.
-            \item Economic growth initially reduces degradation but later exacerbates it.
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}{Discussion}
-        \begin{itemize}
-            \item Results suggest heterogeneity across time.
-            \item EKC not stable in ecologically sensitive regions.
-            \item Potential tipping point in Himalayan environmental dynamics.
-        \end{itemize}
-    \end{frame}
-    
+
     \begin{frame}{Policy Implications}
         \begin{itemize}
+            \item Centralized policy can have heterogenous outcomes.
             \item Need for localized, dynamic policy frameworks.
-            \item Infrastructure planning should integrate ecological risk assessments.
+            \item Underlines the importance of ecological risk assessments.
             \item Emphasis on renewable energy, sustainable urban planning.
         \end{itemize}
     \end{frame}
     
-    \begin{frame}{Conclusion}
-        \begin{itemize}
-            \item Economy-environment trade-offs in the Himalayas are complex.
-            \item EKC model does not universally apply.
-            \item Future research: pinpoint specific projects to build a treatment group for causal analysis.
-        \end{itemize}
-    \end{frame}
-
     \begin{frame}[standout]
-        Thank you.
+        Thank you.\\[2em]
         
+        Our dataset is open-sourced at:
+
+        github.com/RitwizSarma/himalayan-env\\[2em]
+
         Open to questions/comments.
     \end{frame}
     

@@ -33,12 +33,13 @@
 % % Remove page number on cover page
 
 \title{\LARGE The Himalayan Tightrope:\\ \Large Balancing Growth and Sustainability amidst\\ Ecological Sensitivity}
-\author{Ritwiz Sarma\thanks{Corresponding author. Email: ge23ritwiz@mse.ac.in. This is a preliminary draft for the 59th Conference of the Indian Econometric Society. Do not cite.}\\\small~Madras School of Economics \and Riju Garg\thanks{Email: ge23riju@mse.ac.in.}\\\small~Madras School of Economics} % Riju can add acknowledgements and contact details here.
+\author{Ritwiz Sarma\thanks{Corresponding author. Email: ge23ritwiz@mse.ac.in. This is a preliminary draft for the 59th Conference of the Indian Econometric Society. Do not cite.}\\\small~Madras School of Economics \and Riju Garg\\\small~Madras School of Economics} % Riju can add acknowledgements and contact details here.
 % \predate{Latest version available \href{www.facebook.com}{here}\\[1cm]}
-\date{This version: January 14, 2025}
+\date{Original version: January 14, 2025\\This version: \today}
 
 
 \begin{document}
+\setlength{\droptitle}{-1.5cm}
 \pagestyle{empty}
 \maketitle
 \begin{abstract}
@@ -117,7 +118,7 @@ Our focus throughout this study is the role of infrastructure growth, for which 
 %     \caption{Descriptive statistics.}
 % \end{table}
 
-Our smallest unit of measurement is the shrid, an area unit used by the Socioeconomic High-resolution Rural-Urban Geographic Platform for India (SHRUG). It is a village or town unit that has had consistent borders since 1991. This subnational resolution allows us to vastly expand the statistical power of our tests, which becomes relevant in our estimation tasks later.
+Our smallest unit of measurement is the \textit{shrid}, an area unit used by the Socioeconomic High-resolution Rural-Urban Geographic Platform for India (SHRUG). It is a village or town unit that has had consistent borders since 1991. This subnational resolution allows us to vastly expand the statistical power of our tests, which becomes relevant in our estimation tasks later.
 
 For studying economic growth, we use night-time lights and built-up area (Table 1). Night-time lights data has been used to generate measures of economic activity from the early 1990s. Satellite night-time light data offers a unique and comprehensive view of the entire planet, enabling the identification of energy access and quality gaps, as well as trends in economic activity. The remote sensing and economics literature suggests a strong correlation between night-time lights and GDP growth, even at the subnational level, as \textcite{doll2006} find for the regional GDP of 11 European Union countries and US GDP at the state level. We use two sources for night-lights: the Defense Meteorological Program Operational Line-Scan System (DMSP-OLS) and the Visible Infrared Imaging Radiometer Suite (VIIRS) instrument. DMSP-OLS has the unique capability to detect visible and near-infrared emission sources at night, while VIIRS data is a new consistently processed time series of annual global night-time lights that has been produced from monthly cloud-free average radiance grids.
 Built-up area is also obtained from high-resolution daytime satellite data. It leverages a particular type of land use associated with urbanization. It is also used for detecting economic activity at highly local levels - which is particularly useful for developing countries where infrastructure growth is especially likely to spur economic growth. \textcite{baragwanath2021} is an example of a similar use case. We obtain our built-up area estimates from the GHSL (Global Human Settlement) framework provided by the Copernicus Data Space Ecosystem.
@@ -172,7 +173,7 @@ where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and
     \centering
     \begin{tabular}{l|rrrr}
     \hline
-    \multicolumn{1}{c}{\textbf{}} & \multicolumn{1}{c}{\textbf{Coef.}} & \multicolumn{1}{c}{\textbf{Std. Err.}} & \multicolumn{1}{c}{\textbf{t}} & \textbf{P\textgreater{}t} \\ \hline
+    \multicolumn{1}{c}{\textbf{}} & \multicolumn{1}{c}{\textbf{Coef.}} & \multicolumn{1}{c}{\textbf{Rob. Std. Err.}} & \multicolumn{1}{c}{\textbf{t}} & \textbf{P\textgreater{}t} \\ \hline
     EconIndex                     & 0.0242\textsuperscript{***}                             & 0.0004                                 & 61.547     & 0.000                     \\ 
     EconIndex$^2$                   & -0.0002\textsuperscript{***}                            & 0.0001                                 & -18.148    & 0.000                    
     \\ \hline        
@@ -185,7 +186,7 @@ where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and
     \centering
     \begin{tabular}{l|rrrr}
     \hline
-    \multicolumn{1}{c}{\textbf{}} & \multicolumn{1}{c}{\textbf{Coef.}} & \multicolumn{1}{c}{\textbf{Std. Err.}} & \multicolumn{1}{c}{\textbf{t}} & \textbf{P\textgreater{}t} \\ \hline
+    \multicolumn{1}{c}{\textbf{}} & \multicolumn{1}{c}{\textbf{Coef.}} & \multicolumn{1}{c}{\textbf{Rob. Std. Err.}} & \multicolumn{1}{c}{\textbf{t}} & \textbf{P\textgreater{}t} \\ \hline
     EconIndex                     & -0.2366\textsuperscript{***}                             & 0.0332                                 & -7.1136     & 0.000                     \\ 
     EconIndex$^2$                   & 0.0073\textsuperscript{***}                            & 0.0016                                 & 4.7800    & 0.000                    
     \\ \hline        
@@ -195,6 +196,8 @@ where $\eta_i$ represents individual (\textit{shrid}-specific) fixed effects and
 \end{table}
 
 % \input{tables/reg_outp_mod1_stdized_epoch1.tex}
+
+For both sets of coefficients, we provide heteroskedasticity-robust standard errors using the \textcite{white1980} estimator. These coefficients remain significant while clustering at the \textit{shrid} level. 
 
 The regression results showcase a mixed response with respect to the Environmental Kuznets curve hypothesis. During the initial epoch (Table \ref{tab:epoch1}), the results are consistent with the EKC and the scatterplot is an inverse-U curve (Figure \ref{fig:epoch1}), that is economic growth and environment degradation, are both increasing until a certain level before the environment degradation starts to reduce.
 
